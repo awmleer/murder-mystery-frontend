@@ -1,17 +1,18 @@
 import {Injectable} from "@angular/core";
-import {Subject} from "rxjs/Subject";
 import {User} from "../classes/user";
 import {Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise'
 import {CONFIG} from "../app/config";
+import {ToastService} from "./toast.service";
 
 @Injectable()
 export class AccountService {
-  user:User;
+  user:User=null;
 
 
   constructor(
-    private http:Http
+    private http:Http,
+    private toastService: ToastService
   ){}
 
   login(username:string, password: string):Promise<boolean>{
@@ -24,6 +25,7 @@ export class AccountService {
         };
         return true;
       }else{
+        this.toastService.toast(data.payload);
         return false;
       }
     });

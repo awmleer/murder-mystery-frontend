@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {ModelService} from "../services/model.service";
 import {AccountService} from "../services/account.service";
 import {ToastService} from "../services/toast.service";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {ToastService} from "../services/toast.service";
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

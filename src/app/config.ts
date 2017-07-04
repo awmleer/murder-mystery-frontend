@@ -1,3 +1,4 @@
 export const CONFIG = {
-  apiUrl:'http://123.206.177.174:3001'
+  apiUrl:'/api'
+  // apiUrl:'http://123.206.177.174:3001'
 };

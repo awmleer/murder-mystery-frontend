@@ -1,5 +1,11 @@
 {
   "name": "murderMystery",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://123.206.177.174:3001"
+    }
+  ]
 }
