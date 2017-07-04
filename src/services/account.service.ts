@@ -26,6 +26,7 @@ export class AccountService {
           phone:phone,
           id:data.payload.id
         };
+        this.toastService.toast('登录成功');
         return true;
       }else{
         this.toastService.toast(data.payload);
