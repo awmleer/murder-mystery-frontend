@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {ModelService} from "../services/model.service";
 import {AccountService} from "../services/account.service";
+import {ToastService} from "../services/toast.service";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {AccountService} from "../services/account.service";
   providers: [
     StatusBar,
     SplashScreen,
+    ToastService,
     AccountService,
     ModelService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
