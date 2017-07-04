@@ -15,12 +15,15 @@ export class AccountService {
     private toastService: ToastService
   ){}
 
-  login(username:string, password: string):Promise<boolean>{
-    return this.http.get(CONFIG.apiUrl+`/account/login/`).toPromise().then(response=>{
+  login(phone:string, password: string):Promise<boolean>{
+    return this.http.post(CONFIG.apiUrl+`/account/login/`,{
+      phone:phone,
+      password:password
+    }).toPromise().then(response=>{
       let data = response.json();
       if (data.status=='ok'){
         this.user={
-          username:username,
+          phone:phone,
           id:data.payload.id
         };
         return true;
