@@ -17,6 +17,7 @@ import {HttpModule} from "@angular/http";
 import {GameListPageModule} from "../pages/game-list/game-list.module";
 import {RoomListPageModule} from "../pages/room-list/room-list.module";
 import {PlatformService} from "../services/platform.service";
+import {GameDetailPageModule} from "../pages/game-detail/game-detail.module";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {PlatformService} from "../services/platform.service";
     BrowserModule,
     HttpModule,
     GameListPageModule,
+    GameDetailPageModule,
     RoomListPageModule,
     IonicModule.forRoot(MyApp)
   ],

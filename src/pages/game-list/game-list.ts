@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {PlatformService} from "../../services/platform.service";
 import {GameBrief} from "../../classes/game";
+import {GameDetailPage} from "../game-detail/game-detail";
 
 
 @IonicPage()
@@ -22,6 +23,12 @@ export class GameListPage {
     this.platformSvc.getGameList().then(response=>{
       console.log(response.json());
       this.games=response.json()['payload'];
+    });
+  }
+
+  goGameDetail(gameId){
+    this.navCtrl.push(GameDetailPage,{
+      gameId:gameId
     });
   }
 

@@ -9,6 +9,7 @@
 <div *ngFor="let game of games">
   {{game._id}}<br>
   {{game.name}}<br>
+  <a (click)="goGameDetail(game._id)">详情</a>
   <img [src]="game.picUri" width="100px">
 </div>
 </ion-content>
