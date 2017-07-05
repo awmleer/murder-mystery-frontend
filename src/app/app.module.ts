@@ -16,6 +16,7 @@ import {ToastService} from "../services/toast.service";
 import {HttpModule} from "@angular/http";
 import {GameListPageModule} from "../pages/game-list/game-list.module";
 import {RoomListPageModule} from "../pages/room-list/room-list.module";
+import {PlatformService} from "../services/platform.service";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {RoomListPageModule} from "../pages/room-list/room-list.module";
     SplashScreen,
     ToastService,
     AccountService,
+    PlatformService,
     ModelService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
