@@ -15,6 +15,7 @@ import {AccountService} from "../services/account.service";
 import {ToastService} from "../services/toast.service";
 import {HttpModule} from "@angular/http";
 import {GameListPageModule} from "../pages/game-list/game-list.module";
+import {RoomListPageModule} from "../pages/room-list/room-list.module";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {GameListPageModule} from "../pages/game-list/game-list.module";
     BrowserModule,
     HttpModule,
     GameListPageModule,
+    RoomListPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

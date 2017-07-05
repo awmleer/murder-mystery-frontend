@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {GameListPage} from "../game-list/game-list";
+import {RoomListPage} from "../room-list/room-list";
 
 @Component({
   selector: 'page-home',
@@ -14,6 +15,10 @@ export class HomePage {
 
   goGameList(){
     this.navCtrl.push(GameListPage);
+  }
+
+  goRoomList(){
+    this.navCtrl.push(RoomListPage);
   }
 
 }
