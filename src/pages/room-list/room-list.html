@@ -6,5 +6,10 @@
 
 
 <ion-content padding>
-
+<div *ngFor="let room of rooms">
+  {{room.name}}<br>
+  {{room._id}}<br>
+  {{room.roomStage}}<br>
+  <a>进入房间</a>
+</div>
 </ion-content>
