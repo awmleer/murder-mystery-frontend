@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {PlatformService} from "../../services/platform.service";
+import {GameBrief} from "../../classes/game";
 
 
 @IonicPage()
@@ -9,7 +10,7 @@ import {PlatformService} from "../../services/platform.service";
   templateUrl: 'game-list.html',
 })
 export class GameListPage {
-  games=[];
+  games:GameBrief[]=[];
 
   constructor(
     public navCtrl: NavController,
@@ -20,6 +21,7 @@ export class GameListPage {
   ionViewWillEnter(){
     this.platformSvc.getGameList().then(response=>{
       console.log(response.json());
+      this.games=response.json()['payload'];
     });
   }
 

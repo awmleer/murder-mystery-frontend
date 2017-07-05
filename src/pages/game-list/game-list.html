@@ -6,5 +6,9 @@
 
 
 <ion-content padding>
-
+<div *ngFor="let game of games">
+  {{game._id}}<br>
+  {{game.name}}<br>
+  <img [src]="game.picUri" width="100px">
+</div>
 </ion-content>
