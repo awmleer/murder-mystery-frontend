@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {PlatformService} from "../../services/platform.service";
+import {RoomBrief} from "../../classes/room";
 
 /**
  * Generated class for the RoomListPage page.
@@ -13,12 +15,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'room-list.html',
 })
 export class RoomListPage {
+  rooms:RoomBrief[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public platformSvc: PlatformService
+  ) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RoomListPage');
+  ionViewWillEnter(){
+    
   }
 
 }
