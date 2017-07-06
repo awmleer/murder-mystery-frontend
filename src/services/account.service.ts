@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {User} from "../classes/user";
+import {UserInfo} from "../classes/user";
 import {Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise'
 import {CONFIG} from "../app/config";
@@ -7,7 +7,7 @@ import {ToastService} from "./toast.service";
 
 @Injectable()
 export class AccountService {
-  user:User=null;
+  user:UserInfo=null;
 
 
   constructor(
