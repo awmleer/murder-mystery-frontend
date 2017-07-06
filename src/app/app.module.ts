@@ -18,6 +18,7 @@ import {GameListPageModule} from "../pages/game-list/game-list.module";
 import {RoomListPageModule} from "../pages/room-list/room-list.module";
 import {PlatformService} from "../services/platform.service";
 import {GameDetailPageModule} from "../pages/game-detail/game-detail.module";
+import {RoomPreparePageModule} from "../pages/room-prepare/room-prepare.module";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {GameDetailPageModule} from "../pages/game-detail/game-detail.module";
     GameListPageModule,
     GameDetailPageModule,
     RoomListPageModule,
+    RoomPreparePageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

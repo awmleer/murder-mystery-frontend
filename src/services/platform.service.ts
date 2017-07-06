@@ -27,11 +27,18 @@ export class PlatformService {
     return this.http.get(CONFIG.apiUrl+`/room/${roomId}/info/`).toPromise();
   }
 
-  createRoom(gameId:string,roomName:string):Promise<any>{
+  createRoom(gameId:string,roomName:string):Promise<boolean>{
     return this.http.post(CONFIG.apiUrl+'/room/create/',{
       gameTemplateId:gameId,
       roomName:roomName
-    }).toPromise();
+    }).toPromise().then(response=>{
+      if (response.json()['status']=='ok'){
+        return true;
+      }else{
+        this.toastSvc.toast(response.json()['payload']);
+        return false;
+      }
+    });
   }
 
   enterRoom(roomId:string):Promise<any>{

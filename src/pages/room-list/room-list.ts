@@ -4,12 +4,7 @@ import {PlatformService} from "../../services/platform.service";
 import {RoomBrief} from "../../classes/room";
 import {ToastService} from "../../services/toast.service";
 
-/**
- * Generated class for the RoomListPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-room-list',

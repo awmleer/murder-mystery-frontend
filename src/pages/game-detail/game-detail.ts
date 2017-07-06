@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {GameInfo} from "../../classes/game";
 import {PlatformService} from "../../services/platform.service";
 import {ToastService} from "../../services/toast.service";
+import {RoomPreparePage} from "../room-prepare/room-prepare";
 
-/**
- * Generated class for the GameDetailPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-game-detail',
@@ -23,6 +19,7 @@ export class GameDetailPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private toastSvc: ToastService,
+    private alertCtrl: AlertController,
     public platformSvc: PlatformService
   ) {}
 
@@ -38,6 +35,36 @@ export class GameDetailPage {
       }
 
     });
+  }
+
+  createRoom(){
+    let prompt = this.alertCtrl.create({
+      title: '创建房间',
+      message: "请输入要创建的房间名字",
+      inputs: [
+        {
+          name: 'roomName',
+          placeholder: ''
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel'
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log(data);
+            this.platformSvc.createRoom(this.gameId,data['roomName']).then((result:boolean)=>{
+              if (result) {
+                this.navCtrl.push(RoomPreparePage);
+              }
+            });
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
 }
