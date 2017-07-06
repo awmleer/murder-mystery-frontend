@@ -22,11 +22,15 @@ export class AccountService {
     }).toPromise().then(response=>{
       let data = response.json();
       if (data.status=='ok'){
-        this.user={
-          phone:phone,
-          id:data.payload.id
-        };
         this.toastService.toast('登录成功');
+        this.http.get(CONFIG.apiUrl+'/account/info/').toPromise().then(response=>{
+          let data=response.json();
+          if (data['status']=='ok') {
+            this.user=data['payload'];
+          }else {
+            this.toastService.toast('获取用户信息失败');
+          }
+        })
         return true;
       }else{
         this.toastService.toast(data.payload);
