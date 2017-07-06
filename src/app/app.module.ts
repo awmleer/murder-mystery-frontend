@@ -19,6 +19,7 @@ import {RoomListPageModule} from "../pages/room-list/room-list.module";
 import {PlatformService} from "../services/platform.service";
 import {GameDetailPageModule} from "../pages/game-detail/game-detail.module";
 import {RoomPreparePageModule} from "../pages/room-prepare/room-prepare.module";
+import {SocketService} from "../services/socket.service";
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {RoomPreparePageModule} from "../pages/room-prepare/room-prepare.module";
     ToastService,
     AccountService,
     PlatformService,
+    SocketService,
     ModelService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
