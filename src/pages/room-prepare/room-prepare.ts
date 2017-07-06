@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {SocketService} from "../../services/socket.service";
+import Socket = SocketIOClient.Socket;
 
 /**
  * Generated class for the RoomPreparePage page.
@@ -13,12 +15,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'room-prepare.html',
 })
 export class RoomPreparePage {
+  socket:Socket=null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private socketSvc: SocketService
+  ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RoomPreparePage');
+  ionViewWillEnter(){
+    if (this.socket == null) {
+      this.socket=this.socketSvc.getSocket();
+      this.socket.on('initModel',(data)=>{
+        console.log(data);
+      })
+    }
   }
 
 }
