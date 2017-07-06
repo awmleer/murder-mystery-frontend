@@ -27,9 +27,14 @@ export class RoomPreparePage {
   ionViewWillEnter(){
     if (this.socket == null) {
       this.socket=this.socketSvc.getSocket();
-      this.socket.on('initModel',(data)=>{
-        console.log(data);
-      })
+      this.socket.on('connect',()=>{
+        this.socket.emit('initModel',(data)=>{
+          console.log(data);
+        });
+        console.log('initModel event sent');
+      });
+
+
     }
   }
 

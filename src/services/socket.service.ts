@@ -13,6 +13,7 @@ export class SocketService {
   getSocket(){
     if (this.socket == null) {
       this.socket=io.connect(CONFIG.socketUrl);
+      console.log('socket instance init');
     }
     return this.socket;
   }
