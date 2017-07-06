@@ -15,6 +15,15 @@ export class AccountService {
     private toastService: ToastService
   ){}
 
+  initAccount(){
+      this.http.get(CONFIG.apiUrl+'/account/isLogin/').toPromise().then(response=>{
+        let data=response.json();
+        if (data['status'] == 'ok') {
+          this.freshUserInfo();
+        }
+      });
+  }
+
   login(phone:string, password: string):Promise<boolean>{
     return this.http.post(CONFIG.apiUrl+`/account/login/`,{
       phone:phone,
@@ -23,18 +32,22 @@ export class AccountService {
       let data = response.json();
       if (data.status=='ok'){
         this.toastService.toast('登录成功');
-        this.http.get(CONFIG.apiUrl+'/account/info/').toPromise().then(response=>{
-          let data=response.json();
-          if (data['status']=='ok') {
-            this.user=data['payload'];
-          }else {
-            this.toastService.toast('获取用户信息失败');
-          }
-        })
+        this.freshUserInfo();
         return true;
       }else{
         this.toastService.toast(data.payload);
         return false;
+      }
+    });
+  }
+
+  freshUserInfo():void{
+    this.http.get(CONFIG.apiUrl+'/account/info/').toPromise().then(response=>{
+      let data=response.json();
+      if (data['status']=='ok') {
+        this.user=data['payload'];
+      }else {
+        this.toastService.toast('获取用户信息失败');
       }
     });
   }
