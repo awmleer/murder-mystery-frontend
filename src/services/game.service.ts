@@ -14,7 +14,7 @@ export class GameService {
 
 
   initModel(callback:()=>any){
-    this.socketSvc.emit('initModel',(data)=>{
+    this.socketSvc.call('initModel',(data)=>{
       this.gameModel=data.initGame;
       this.roomModel=data.initRoom;
       callback();
@@ -22,7 +22,7 @@ export class GameService {
   }
 
   selectRole(roleId){
-    this.socketSvc.emit('selectRole',{
+    this.socketSvc.inform('selectRole',{
       roleId:roleId
     });
   }

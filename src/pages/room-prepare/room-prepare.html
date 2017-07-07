@@ -11,7 +11,6 @@
   <div *ngFor="let role of gameInfo?.roles; let i=index" style="margin-bottom: 15px;border-bottom: solid 1px #ccc">
     {{role.name}}<br>
     {{role.description}}<br>
-
     <a (click)="gameSvc.selectRole(role._id)" *ngIf="gameSvc.roomModel.roleAvailable.indexOf(i)!=-1">选择</a>
   </div>
 </ion-content>

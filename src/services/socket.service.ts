@@ -2,13 +2,16 @@ import {Injectable} from '@angular/core';
 import io from 'socket.io-client';
 import {CONFIG} from "../app/config";
 import Socket = SocketIOClient.Socket;
+import {ToastService} from "./toast.service";
 
 
 @Injectable()
 export class SocketService {
   socket:Socket;
 
-  constructor() {}
+  constructor(
+    private toastSvc: ToastService
+  ) {}
 
   initSocket(){
     this.socket=io.connect(CONFIG.socketUrl);
@@ -26,12 +29,18 @@ export class SocketService {
     return this.socket;
   }
 
-  emit(eventName:string,...args:any[]){
-    // this.socket.emit(eventName)
+  call(eventName:string, ...args:any[]){
     this.checkSocket();
-    console.log(args);
-    // this.socket.emit.apply(this,args);
     this.socket.emit(eventName,...args);
+  }
+
+  inform(eventName:string, param?:object){
+    if (!param) param={};
+    this.socket.emit(eventName,param,(data)=>{
+      if (data['status'] == 'fail') {
+        this.toastSvc.toast(data['payload']);
+      }
+    });
   }
 
 }
