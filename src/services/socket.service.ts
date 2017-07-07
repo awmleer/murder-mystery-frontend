@@ -29,8 +29,9 @@ export class SocketService {
   emit(eventName:string,...args:any[]){
     // this.socket.emit(eventName)
     this.checkSocket();
-    args.unshift(eventName);
-    this.socket.emit.apply(this,args);
+    console.log(args);
+    // this.socket.emit.apply(this,args);
+    this.socket.emit(eventName,...args);
   }
 
 }
