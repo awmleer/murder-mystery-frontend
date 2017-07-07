@@ -6,18 +6,19 @@ import { Pipe, PipeTransform } from '@angular/core';
   pure: false
 })
 export class RoleToUserPipe implements PipeTransform {
-  // transform(roleId: number, players) {
-  transform(roleId: any) {
-    // for (let userId in players) {
-    //   if (players.hasOwnProperty(userId)) {
-    //     if (players[userId].roleId == roleId) {
-    //       return {
-    //         userId:userId,
-    //         username:players[userId].username
-    //       };
-    //     }
-    //   }
-    // }
+  transform(roleId: number, players) {
+  // transform(roleId: any) {
+    for (let userId in players) {
+      console.log(players);
+      if (players.hasOwnProperty(userId)) {
+        if (players[userId].roleId == roleId) {
+          return {
+            userId:userId,
+            username:players[userId].username
+          };
+        }
+      }
+    }
     return {
       userId: '',
       username: ''

@@ -20,7 +20,6 @@ import {PlatformService} from "../services/platform.service";
 import {GameDetailPageModule} from "../pages/game-detail/game-detail.module";
 import {RoomPreparePageModule} from "../pages/room-prepare/room-prepare.module";
 import {SocketService} from "../services/socket.service";
-import { RoleToUserPipe } from '../pipes/role-to-user.pipe';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { RoleToUserPipe } from '../pipes/role-to-user.pipe';
     AboutPage,
     MinePage,
     HomePage,
-    TabsPage,
-    RoleToUserPipe
+    TabsPage
   ],
   imports: [
     BrowserModule,
