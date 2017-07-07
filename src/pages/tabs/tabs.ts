@@ -5,6 +5,7 @@ import { MinePage } from '../mine/mine';
 import { HomePage } from '../home/home';
 import {AccountService} from "../../services/account.service";
 import {NavController} from "ionic-angular";
+import {RoomPreparePage} from "../room-prepare/room-prepare";
 
 
 @Component({
@@ -22,6 +23,8 @@ export class TabsPage {
   ) {}
 
   ionViewDidLoad(){
-    this.accountSvc.initAccount(this.navCtrl);
+    this.accountSvc.initAccount(()=>{
+      this.navCtrl.push(RoomPreparePage);
+    });
   }
 }

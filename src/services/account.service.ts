@@ -4,7 +4,6 @@ import {Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise'
 import {CONFIG} from "../app/config";
 import {ToastService} from "./toast.service";
-import {RoomPreparePage} from "../pages/room-prepare/room-prepare";
 
 @Injectable()
 export class AccountService {
@@ -16,7 +15,7 @@ export class AccountService {
     private toastService: ToastService
   ){}
 
-  initAccount(navCtrl){
+  initAccount(callbackWhenHasRoom:()=>any){
       this.http.get(CONFIG.apiUrl+'/account/isLogin/').toPromise().then(response=>{
         let data=response.json();
         if (data['status'] == 'ok') {
@@ -24,7 +23,7 @@ export class AccountService {
             if(result==true){
               if (this.user.roomId != '') {
                 console.log(this.user.roomId);
-                navCtrl.push(RoomPreparePage);//TODO this is not very graceful
+                callbackWhenHasRoom();
               }
             }
           });

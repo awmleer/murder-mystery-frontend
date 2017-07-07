@@ -25,15 +25,10 @@ export class GameDetailPage {
 
   ionViewWillEnter(){
     this.gameId=this.navParams.get('gameId');
-    this.platformSvc.getGameInfo(this.gameId).then(response=>{
-      let data=response.json();
-      if (data.status=='ok') {
-        this.gameInfo=data.payload;
-      }else{
-        this.toastSvc.toast(data.payload);
-        this.navCtrl.pop();
-      }
-
+    this.platformSvc.getGameInfo(this.gameId).then(gameInfo=>{
+      this.gameInfo=gameInfo;
+    },()=>{
+      this.navCtrl.pop();
     });
   }
 

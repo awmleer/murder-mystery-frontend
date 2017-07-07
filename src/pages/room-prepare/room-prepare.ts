@@ -2,13 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {SocketService} from "../../services/socket.service";
 import Socket = SocketIOClient.Socket;
+import {PlatformService} from "../../services/platform.service";
 
-/**
- * Generated class for the RoomPreparePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-room-prepare',
@@ -20,11 +16,15 @@ export class RoomPreparePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public platformSvc: PlatformService,
     private socketSvc: SocketService
   ) {
   }
 
   ionViewWillEnter(){
+    this.platformSvc.getRoomInfo().then(roomInfo=>{
+      console.log('got room info');
+    });
     if (this.socket == null) {
       this.socket=this.socketSvc.getSocket();
       this.socket.on('connect',()=>{
@@ -33,8 +33,6 @@ export class RoomPreparePage {
         });
         console.log('initModel event sent');
       });
-
-
     }
   }
 
