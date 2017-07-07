@@ -27,7 +27,7 @@ export class PlatformService {
         return data['payload'];
       }else{
         this.toastSvc.toast('获取游戏信息失败');
-        throw new Error();
+        throw new Error(data['payload']);
       }
     });
   }
@@ -43,7 +43,7 @@ export class PlatformService {
         return data['payload'];
       }else{
         this.toastSvc.toast('获取房间信息失败');
-        throw new Error();
+        throw new Error(data['payload']);
       }
     });
   }
