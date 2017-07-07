@@ -22,23 +22,15 @@ export class RoomPreparePage {
   }
 
   ionViewWillEnter(){
-    // this.platformSvc.getRoomInfo().then(roomInfo=>{
-    //   console.log(roomInfo);
-    //   this.platformSvc.getGameInfo(roomInfo.gameTemplateId).then(gameInfo=>{
-    //     console.log(gameInfo);
-    //   });
-    // });
     if (this.socket == null) {
       this.socket=this.socketSvc.getSocket();
-      this.socket.on('connect',()=>{
-        this.socket.emit('initModel',(data)=>{
-          console.log(data);
-          this.platformSvc.getGameInfo(data.initRoom.gameTemplateId).then(gameInfo=>{
-            console.log(gameInfo);
-          });
-        });
-      });
     }
+    this.socket.emit('initModel',(data)=>{
+      console.log(data);
+      this.platformSvc.getGameInfo(data.initRoom.gameTemplateId).then(gameInfo=>{
+        console.log(gameInfo);
+      });
+    });
   }
 
 }
