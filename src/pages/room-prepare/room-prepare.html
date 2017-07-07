@@ -8,5 +8,8 @@
 
 
 <ion-content padding>
-
+  <div *ngFor="let role of gameInfo?.roles">
+    {{role.name}}
+    <a (click)="gameSvc.selectRole(role._id)">选择</a>
+  </div>
 </ion-content>

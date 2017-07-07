@@ -10,12 +10,27 @@ export class SocketService {
 
   constructor() {}
 
-  getSocket(){
+  initSocket(){
+    this.socket=io.connect(CONFIG.socketUrl);
+    console.log('socket instance init');
+  }
+
+  checkSocket(){
     if (this.socket == null) {
-      this.socket=io.connect(CONFIG.socketUrl);
-      console.log('socket instance init');
+      this.initSocket();
     }
+  }
+
+  getSocket(){
+    this.checkSocket();
     return this.socket;
+  }
+
+  emit(eventName:string,...args:any[]){
+    // this.socket.emit(eventName)
+    this.checkSocket();
+    args.unshift(eventName);
+    this.socket.emit.apply(this,args);
   }
 
 }

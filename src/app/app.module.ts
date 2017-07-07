@@ -10,7 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {ModelService} from "../services/model.service";
+import {GameService} from "../services/game.service";
 import {AccountService} from "../services/account.service";
 import {ToastService} from "../services/toast.service";
 import {HttpModule} from "@angular/http";
@@ -53,7 +53,7 @@ import {SocketService} from "../services/socket.service";
     AccountService,
     PlatformService,
     SocketService,
-    ModelService,
+    GameService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
