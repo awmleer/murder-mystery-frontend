@@ -29,12 +29,12 @@ export class SocketService {
     return this.socket;
   }
 
-  call(eventName:string, ...args:any[]){
+  call(eventName:string, ...args:any[]){//call用来做双向的数据交互
     this.checkSocket();
     this.socket.emit(eventName,...args);
   }
 
-  inform(eventName:string, param?:object){
+  inform(eventName:string, param?:object){//inform用来做单向的数据交互
     if (!param) param={};
     this.socket.emit(eventName,param,(data)=>{
       if (data['status'] == 'fail') {

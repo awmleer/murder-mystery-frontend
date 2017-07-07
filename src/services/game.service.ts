@@ -6,7 +6,7 @@ import {SocketService} from "./socket.service";
 @Injectable()
 export class GameService {
   roomModel;
-  gameModel;//TODO type definition
+  playerModel;//TODO type definition
 
   constructor(
     private socketSvc: SocketService
@@ -15,7 +15,7 @@ export class GameService {
 
   initModel(callback:()=>any){
     this.socketSvc.call('initModel',(data)=>{
-      this.gameModel=data.initGame;
+      this.playerModel=data.initPlayer;
       this.roomModel=data.initRoom;
       callback();
     });
