@@ -9,7 +9,6 @@ export class RoleToUserPipe implements PipeTransform {
   transform(roleId: number, players) {
   // transform(roleId: any) {
     for (let userId in players) {
-      console.log(players);
       if (players.hasOwnProperty(userId)) {
         if (players[userId].roleId == roleId) {
           return {
