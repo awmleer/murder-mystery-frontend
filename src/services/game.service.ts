@@ -2,11 +2,12 @@ import {Injectable} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {SocketService} from "./socket.service";
 import * as jdp from 'jsondiffpatch';
+import {PlayerModel, RoomModel} from "../classes/model";
 
 @Injectable()
 export class GameService {
-  roomModel;
-  playerModel;//TODO type definition
+  roomModel:RoomModel;
+  playerModel: PlayerModel;
   private patcher;
 
   constructor(
