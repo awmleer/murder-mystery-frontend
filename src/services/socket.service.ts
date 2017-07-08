@@ -32,11 +32,6 @@ export class SocketService {
   call(eventName:string, param?:object):Promise<any>{//call用来做双向的数据交互
     this.checkSocket();
     if (!param) param={};
-    // console.log(param);
-    // this.socket.emit(eventName,param,(data)=>{
-    //   console.log(data);
-    // });
-
     return new Promise((resolve, reject)=>{
       this.socket.emit(eventName,param,(data)=>{
         console.log('resolve!');
@@ -46,15 +41,23 @@ export class SocketService {
     });
   }
 
-  inform(eventName:string, param?:object){//inform用来做单向的数据交互
+  inform(eventName:string, param?:object):Promise<null>{//inform用来做单向的数据交互
     this.checkSocket();
     if (!param) param={};
-    this.socket.emit(eventName,param,(data)=>{
-      if (data['status'] == 'fail') {
-        this.toastSvc.toast(data['payload']);
-      }
+    return new Promise((resolve, reject) => {
+      this.socket.emit(eventName,param,(data)=>{
+        if (data['status'] == 'ok') {
+          resolve();
+        }else{
+          reject();
+          if (data['payload']) {
+            this.toastSvc.toast(data['payload']);
+          }
+        }
+      });
+      console.log(eventName + ' informed');
     });
-    console.log(eventName + ' informed');
+
   }
 
   on(eventName:string,callback:(data)=>void){
