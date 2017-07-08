@@ -1,5 +1,4 @@
 import {Injectable} from "@angular/core";
-import {Subject} from "rxjs/Subject";
 import {SocketService} from "./socket.service";
 import * as jdp from 'jsondiffpatch';
 import {PlayerModel, RoomModel} from "../classes/model";
@@ -27,7 +26,7 @@ export class GameService {
 
 
   initModel(callback:()=>any){
-    this.socketSvc.call('initModel',(data)=>{
+    this.socketSvc.call('initModel').then((data)=>{
       console.log('initModel got callback');
       console.log(data);
       this.playerModel=data.initPlayer;
@@ -40,6 +39,10 @@ export class GameService {
     this.socketSvc.inform('selectRole',{
       roleId:roleId
     });
+  }
+
+  startGame(){
+
   }
 
 

@@ -29,10 +29,21 @@ export class SocketService {
     return this.socket;
   }
 
-  call(eventName:string, ...args:any[]){//call用来做双向的数据交互
+  call(eventName:string, param?:object):Promise<any>{//call用来做双向的数据交互
     this.checkSocket();
-    this.socket.emit(eventName,...args);
-    console.log(eventName + ' called');
+    if (!param) param={};
+    // console.log(param);
+    // this.socket.emit(eventName,param,(data)=>{
+    //   console.log(data);
+    // });
+
+    return new Promise((resolve, reject)=>{
+      this.socket.emit(eventName,param,(data)=>{
+        console.log('resolve!');
+        resolve(data);
+      });
+      console.log(eventName + ' called');
+    });
   }
 
   inform(eventName:string, param?:object){//inform用来做单向的数据交互

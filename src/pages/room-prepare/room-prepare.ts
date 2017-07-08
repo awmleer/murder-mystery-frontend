@@ -31,6 +31,10 @@ export class RoomPreparePage {
 
   }
 
+  startGame(){
+
+  }
+
 
 
 
