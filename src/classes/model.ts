@@ -1,5 +1,8 @@
-type timestamp = number;
-type roleId = number;
+export type timestamp = number;
+export type roleId = number;
+export type placeId =number;
+export type stageId = number;
+export type uri = string;
 
 export class PlayerInRoomModel {
   _id: string;
@@ -65,7 +68,7 @@ export class Clue {
   clueId: number;
   name: string;
   Type: "pic" | "text";
-  uri: string;
+  uri: uri;
   description: string;
   _id: string;
   usablesId: number[]//可对该线索使用的道具
@@ -81,7 +84,7 @@ export class Notification {
 export class Usable {
   usableId: number;
   name: string;
-  uri: string;//图片的url
+  uri: uri;//图片的url
   cd: number;
   category: "item" | "skill";
   target: "self" | "chosenUser" | roleId;
