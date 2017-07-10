@@ -1,3 +1,9 @@
 page-game-main {
-
+  game-notification{
+    position: fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background: #bfbfbf;//just for debug
+  }
 }
