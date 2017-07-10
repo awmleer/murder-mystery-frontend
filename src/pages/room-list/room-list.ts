@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {PlatformService} from "../../services/platform.service";
 import {RoomList} from "../../classes/room";
 import {ToastService} from "../../services/toast.service";
+import {RoomPreparePage} from "../room-prepare/room-prepare";
 
 
 @IonicPage()
@@ -31,5 +32,12 @@ export class RoomListPage {
       }
     })
   }
+
+  enterRoom(roomId:string){
+    this.platformSvc.enterRoom(roomId).then(()=>{
+      this.navCtrl.push(RoomPreparePage);
+    });
+  }
+
 
 }

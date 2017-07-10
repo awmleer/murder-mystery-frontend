@@ -62,8 +62,16 @@ export class PlatformService {
     });
   }
 
-  enterRoom(roomId:string):Promise<any>{
-    return this.http.get(CONFIG.apiUrl+`/room/${roomId}/enter/`).toPromise();
+  enterRoom(roomId:string):Promise<null>{
+    return this.http.get(CONFIG.apiUrl+`/room/${roomId}/enter/`).toPromise().then(response=>{
+      let data = response.json();
+      if (data['status']) {
+        return;
+      }else{
+        this.toastSvc.toast(data['payload']);
+        throw new Error(data['payload']);
+      }
+    });
   }
 
 
