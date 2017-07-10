@@ -22,6 +22,7 @@ import {RoomPreparePageModule} from "../pages/room-prepare/room-prepare.module";
 import {SocketService} from "../services/socket.service";
 import {GameCluePageModule} from "../pages/game/game-clue/game-clue.module";
 import {GameMainPageModule} from "../pages/game/game-main/game-main.module";
+import {GameInvestigatePageModule} from "../pages/game-investigate/game-investigate.module";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {GameMainPageModule} from "../pages/game/game-main/game-main.module";
     RoomPreparePageModule,
     GameCluePageModule,
     GameMainPageModule,
+    GameInvestigatePageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
