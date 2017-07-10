@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import Socket = SocketIOClient.Socket;
+import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
 import {PlatformService} from "../../services/platform.service";
 import {GameInfo} from "../../classes/game";
 import {GameService} from "../../services/game.service";
+import {GameMainPage} from "../game/game-main/game-main";
 
 
 @IonicPage()
@@ -17,6 +17,7 @@ export class RoomPreparePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    private modalCtrl: ModalController,
     public platformSvc: PlatformService,
     public gameSvc: GameService,
   ) {}
@@ -32,7 +33,10 @@ export class RoomPreparePage {
   }
 
   startGame(){
-
+    // this.gameSvc.startGame().then(()=>{
+    //   this.modalCtrl.create(GameMainPage).present();
+    // });
+    this.modalCtrl.create(GameMainPage).present();
   }
 
 

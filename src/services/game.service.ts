@@ -41,8 +41,8 @@ export class GameService {
     });
   }
 
-  startGame(){
-
+  startGame():Promise<null>{
+    return this.socketSvc.inform('startGame');
   }
 
 

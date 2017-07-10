@@ -20,6 +20,8 @@ import {PlatformService} from "../services/platform.service";
 import {GameDetailPageModule} from "../pages/game-detail/game-detail.module";
 import {RoomPreparePageModule} from "../pages/room-prepare/room-prepare.module";
 import {SocketService} from "../services/socket.service";
+import {GameCluePageModule} from "../pages/game/game-clue/game-clue.module";
+import {GameMainPageModule} from "../pages/game/game-main/game-main.module";
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import {SocketService} from "../services/socket.service";
     GameDetailPageModule,
     RoomListPageModule,
     RoomPreparePageModule,
+    GameCluePageModule,
+    GameMainPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
