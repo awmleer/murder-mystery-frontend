@@ -14,5 +14,20 @@
 
 
 <ion-content padding>
-  <button ion-button block (click)="test()"></button>
+  当前房间阶段：{{gameSvc.roomModel.roomStage}}<br>
+  当前游戏阶段：{{gameSvc.roomModel.gameStage}}<br>
+
+  阶段开始于：{{gameSvc.roomModel.stageBeginAt}}
+  <hr>
+  用户ID：{{gameSvc.playerModel.userId}}<br>
+  用户名：{{gameSvc.playerModel.username}}<br>
+  playerId：{{gameSvc.playerModel._id}}<<br>
+  上次调查事件：{{gameSvc.playerModel.lastSurveyedAt}}<br>
+  笔记：{{gameSvc.playerModel.note}}<br>
+  <hr>
+  属性列表<br>
+  <div *ngFor="let prop of gameSvc.playerModel.props">
+    {{prop.name}}({{prop._id}})：{{prop.value}}
+  </div>
+  <button ion-button block (click)="goCluePage()">线索</button>
 </ion-content>

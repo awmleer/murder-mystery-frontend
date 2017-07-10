@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {GameCluePage} from "../game-clue/game-clue";
+import {GameService} from "../../../services/game.service";
 
 /**
  * Generated class for the GameMainPage page.
@@ -17,14 +18,15 @@ export class GameMainPage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    private gameSvc: GameService
+    // public navParams: NavParams
   ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GameMainPage');
   }
 
-  test(){
+  goCluePage(){
     this.navCtrl.push(GameCluePage);
   }
 

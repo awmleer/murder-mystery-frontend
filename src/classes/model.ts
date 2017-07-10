@@ -5,7 +5,7 @@ export class PlayerInRoomModel {
   _id: string;
   userId: string;
   username: string;
-  roleId: number;
+  roleId: roleId;
   socketId: string; //(""表示未连接或未进入房间)
   stageConfirm: boolean // true:玩家已完成当前回合
 }
@@ -21,7 +21,7 @@ export class RoomModel {
   stageBeginAt: timestamp;
   roleAvailable: number[]; // 可选角色
   vote: {
-    optionalRolesId: number[];// 投票阶段可投的role_id
+    optionalRolesId: roleId[];// 投票阶段可投的role_id
     description: string;
   };
   focusRoleId: number; //某些stage的关键角色ID
