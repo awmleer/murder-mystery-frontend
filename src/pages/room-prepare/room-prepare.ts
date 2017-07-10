@@ -23,7 +23,7 @@ export class RoomPreparePage {
   ) {}
 
   ionViewWillEnter(){
-    this.gameSvc.initModel(()=>{
+    this.gameSvc.initModel().then(()=>{
       this.platformSvc.getGameInfo(this.gameSvc.roomModel.gameTemplateId).then(gameInfo=>{
         console.log(gameInfo);
         this.gameInfo=gameInfo;

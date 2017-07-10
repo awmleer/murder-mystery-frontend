@@ -2,11 +2,13 @@ import {Injectable} from "@angular/core";
 import {SocketService} from "./socket.service";
 import * as jdp from 'jsondiffpatch';
 import {PlayerModel, RoomModel} from "../classes/model";
+import {GameTemplate} from "../classes/template";
 
 @Injectable()
 export class GameService {
   roomModel:RoomModel;
   playerModel: PlayerModel;
+  template: GameTemplate;
   private patcher;
 
   constructor(
@@ -25,14 +27,21 @@ export class GameService {
   }
 
 
-  initModel(callback:()=>any){
-    this.socketSvc.call('initModel').then((data)=>{
-      console.log('initModel got callback');
-      console.log(data);
-      this.playerModel=data.initPlayer;
-      this.roomModel=data.initRoom;
-      callback();
-    });
+  initModel():Promise<null>{
+      return new Promise((resolve) => {
+        this.socketSvc.call('initModel').then((data)=>{
+          console.log('initModel got callback');
+          console.log(data);
+          this.playerModel=data.initPlayer;
+          this.roomModel=data.initRoom;
+          resolve();
+        });
+      });
+
+  }
+
+  freshTemplate(){
+
   }
 
   selectRole(roleId){
