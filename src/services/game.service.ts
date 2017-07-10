@@ -3,6 +3,8 @@ import {SocketService} from "./socket.service";
 import * as jdp from 'jsondiffpatch';
 import {PlayerModel, RoomModel} from "../classes/model";
 import {GameTemplate} from "../classes/template";
+import {Http} from "@angular/http";
+import {CONFIG} from "../app/config";
 
 @Injectable()
 export class GameService {
@@ -12,7 +14,8 @@ export class GameService {
   private patcher;
 
   constructor(
-    private socketSvc: SocketService
+    private socketSvc: SocketService,
+    private http: Http
   ){
     this.patcher=jdp.create();
     console.log(this.patcher);
@@ -28,20 +31,24 @@ export class GameService {
 
 
   initModel():Promise<null>{
-      return new Promise((resolve) => {
-        this.socketSvc.call('initModel').then((data)=>{
-          console.log('initModel got callback');
-          console.log(data);
-          this.playerModel=data.initPlayer;
-          this.roomModel=data.initRoom;
-          resolve();
-        });
+    return new Promise((resolve) => {
+      this.socketSvc.call('initModel').then((data)=>{
+        console.log('initModel got callback');
+        console.log(data);
+        this.playerModel=data.initPlayer;
+        this.roomModel=data.initRoom;
+        resolve();
       });
+    });
 
   }
 
-  freshTemplate(){
-
+  freshTemplate():Promise<null>{
+    return this.http.get(CONFIG.apiUrl+`/game/${this.roomModel.gameTemplateId}/template/`)
+      .toPromise().then(response=>{
+        this.template=response.json();
+        return;
+      });
   }
 
   selectRole(roleId){

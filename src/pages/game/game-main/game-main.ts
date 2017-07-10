@@ -17,8 +17,8 @@ export class GameMainPage {
     // public navParams: NavParams
   ) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GameMainPage');
+  ionViewWillLoad(){
+    this.gameSvc.freshTemplate();
   }
 
   goCluePage(){
