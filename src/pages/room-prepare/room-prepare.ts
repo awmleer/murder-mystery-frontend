@@ -33,10 +33,10 @@ export class RoomPreparePage {
   }
 
   startGame(){
-    // this.gameSvc.startGame().then(()=>{
-    //   this.modalCtrl.create(GameMainPage).present();
-    // });
-    this.modalCtrl.create(GameMainPage).present();
+    this.gameSvc.startGame().then(()=>{
+      this.modalCtrl.create(GameMainPage).present();
+    });
+    // this.modalCtrl.create(GameMainPage).present();
   }
 
 

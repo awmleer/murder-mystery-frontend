@@ -27,6 +27,7 @@
     "@ionic/storage": "2.0.1",
     "@types/socket.io": "^1.4.29",
     "@types/socket.io-client": "^1.4.29",
+    "angular-pipes": "^6.5.2",
     "ionic-angular": "^3.5.0",
     "ionicons": "3.0.0",
     "jsondiffpatch": "^0.2.4",

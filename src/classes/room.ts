@@ -8,3 +8,7 @@ export class RoomBrief {
 export class RoomInfo extends RoomBrief{
 
 }
+
+export class RoomList {
+  [_id:string]:RoomBrief;
+}

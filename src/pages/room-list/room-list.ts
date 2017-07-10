@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {PlatformService} from "../../services/platform.service";
-import {RoomBrief} from "../../classes/room";
+import {RoomList} from "../../classes/room";
 import {ToastService} from "../../services/toast.service";
 
 
@@ -11,7 +11,7 @@ import {ToastService} from "../../services/toast.service";
   templateUrl: 'room-list.html',
 })
 export class RoomListPage {
-  rooms:RoomBrief[];
+  rooms:RoomList;
 
   constructor(
     public navCtrl: NavController,

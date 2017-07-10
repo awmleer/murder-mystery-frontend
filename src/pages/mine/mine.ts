@@ -17,4 +17,8 @@ export class MinePage {
     this.accountService.login('110','110');
   }
 
+  login2(){
+    this.accountService.login('1100','110');
+  }
+
 }
