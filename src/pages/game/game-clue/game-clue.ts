@@ -1,12 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {GameService} from "../../../services/game.service";
 
-/**
- * Generated class for the GameCluePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-game-clue',
@@ -14,11 +9,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class GameCluePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GameCluePage');
-  }
+  constructor(
+    public navCtrl: NavController,
+    private gameSvc: GameService
+  ) {}
 
 }
