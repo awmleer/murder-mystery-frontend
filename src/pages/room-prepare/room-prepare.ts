@@ -24,6 +24,9 @@ export class RoomPreparePage {
 
   ionViewWillEnter(){
     this.gameSvc.initModel().then(()=>{
+      if(this.gameSvc.roomModel.roomStage=='start'){
+        this.goGameMainPage();
+      }
       this.platformSvc.getGameInfo(this.gameSvc.roomModel.gameTemplateId).then(gameInfo=>{
         console.log(gameInfo);
         this.gameInfo=gameInfo;
@@ -34,9 +37,14 @@ export class RoomPreparePage {
 
   startGame(){
     this.gameSvc.startGame().then(()=>{
-      this.modalCtrl.create(GameMainPage).present();
+      this.goGameMainPage();
     });
     // this.modalCtrl.create(GameMainPage).present();
+  }
+
+
+  goGameMainPage(){
+    this.modalCtrl.create(GameMainPage).present();
   }
 
 

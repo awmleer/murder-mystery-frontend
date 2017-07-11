@@ -49,7 +49,7 @@ export class SocketService {
         if (data['status'] == 'ok') {
           resolve();
         }else{
-          reject();
+          reject(data['payload']);
           if (data['payload']) {
             this.toastSvc.toast(data['payload']);
           }
