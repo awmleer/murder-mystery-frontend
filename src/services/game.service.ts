@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {SocketService} from "./socket.service";
 import * as jdp from 'jsondiffpatch';
-import {PlayerModel, RoomModel} from "../classes/model";
+import {placeId, PlayerModel, RoomModel} from "../classes/model";
 import {GameTemplate} from "../classes/template";
 import {Http} from "@angular/http";
 import {CONFIG} from "../app/config";
@@ -53,12 +53,18 @@ export class GameService {
 
   selectRole(roleId){
     this.socketSvc.inform('selectRole',{
-      roleId:roleId
+      roleId: roleId
     });
   }
 
   startGame():Promise<null>{
     return this.socketSvc.inform('startGame');
+  }
+
+  survey(placeId:placeId){
+    this.socketSvc.inform('survey',{
+      placeId: placeId
+    });
   }
 
 

@@ -18,7 +18,7 @@ export class GameSurveyPage {
   ) {}
 
   survey(placeId:placeId){
-
+    this.gameSvc.survey(placeId);
   }
 
 }
