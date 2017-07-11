@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {GameService} from "../../services/game.service";
 
 
 @IonicPage()
@@ -9,8 +10,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class GameInvestigatePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    private navCtrl: NavController,
+    private gameSvc: GameService
+    // public navParams: NavParams
+  ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GameInvestigatePage');
