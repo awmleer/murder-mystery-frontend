@@ -27,6 +27,7 @@ export class RoomModel {
     optionalRolesId: roleId[];// 投票阶段可投的role_id
     description: string;
   };
+  places: Place[];
   focusRoleId: number; //某些stage的关键角色ID
 }
 
@@ -100,4 +101,12 @@ export class Question {
     _id: number; //从0开始递增
     text: string
   }[];
+}
+
+export class Place {
+  _id: placeId;
+  name: string;
+  description: string;
+  costAp: number;
+  surveySuccPsb: number;
 }

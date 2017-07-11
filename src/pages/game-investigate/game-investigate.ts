@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {GameService} from "../../services/game.service";
+import {placeId} from "../../classes/model";
 
 
 @IonicPage()
@@ -16,8 +17,8 @@ export class GameInvestigatePage {
     // public navParams: NavParams
   ) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GameInvestigatePage');
+  investigate(placeId:placeId){
+
   }
 
 }
