@@ -9,6 +9,6 @@
 
 <ion-content padding>
   <div *ngFor="let place of gameSvc.roomModel.places">
-    {{place.name}} <a (click)="investigate(place._id)">调查</a>
+    {{place.name}} <a (click)="survey(place._id)">调查</a>
   </div>
 </ion-content>

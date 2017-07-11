@@ -6,10 +6,10 @@ import {placeId} from "../../classes/model";
 
 @IonicPage()
 @Component({
-  selector: 'page-game-investigate',
-  templateUrl: 'game-investigate.html',
+  selector: 'page-game-survey',
+  templateUrl: 'game-survey.html',
 })
-export class GameInvestigatePage {
+export class GameSurveyPage {
 
   constructor(
     private navCtrl: NavController,
@@ -17,7 +17,7 @@ export class GameInvestigatePage {
     // public navParams: NavParams
   ) {}
 
-  investigate(placeId:placeId){
+  survey(placeId:placeId){
 
   }
 

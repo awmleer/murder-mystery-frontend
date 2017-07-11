@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {GameCluePage} from "../game-clue/game-clue";
 import {GameService} from "../../../services/game.service";
-import {GameInvestigatePage} from "../../game-investigate/game-investigate";
+import {GameSurveyPage} from "../../game-survey/game-survey";
 
 
 @IonicPage()
@@ -26,8 +26,8 @@ export class GameMainPage {
     this.navCtrl.push(GameCluePage);
   }
 
-  goInvestigatePage(){
-    this.navCtrl.push(GameInvestigatePage);
+  goSurveyPage(){
+    this.navCtrl.push(GameSurveyPage);
   }
 
 }
