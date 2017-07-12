@@ -11,6 +11,6 @@
   <div *ngFor="let clue of gameSvc.playerModel.clues" style="border: solid 1px #bfbfbf;padding: 10px;">
     {{clue.name}}({{clue._id}})<br>
     {{clue.description}}<br>
-    <img *ngIf="clue.Type=='pic'" [src]="clue.uri">
+    <img *ngIf="clue.Type=='pic'" [src]="clue.content">
   </div>
 </ion-content>

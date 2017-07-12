@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {GameService} from "../../../services/game.service";
+import {Usable, usableId} from "../../../classes/model";
 
 
 @IonicPage()
@@ -13,11 +14,13 @@ export class GameItemListPage {
   constructor(
     public navCtrl: NavController,
     private gameSvc: GameService
-  ) {
-  }
+  ) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GameItemListPage');
+  activateItem(item:Usable){
+    if(item.target=='chosenUser'){
+      //TODO
+    }
+    this.gameSvc.activateUsable(item.usableId);
   }
 
 }
