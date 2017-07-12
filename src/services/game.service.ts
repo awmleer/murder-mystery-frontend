@@ -40,7 +40,14 @@ export class GameService {
         resolve();
       });
     });
+  }
 
+  onGameStarted():Promise<null>{
+      return new Promise(resolve => {
+        this.socketSvc.on('gameStarted',data=>{
+          resolve();
+        });
+      });
   }
 
   freshTemplate():Promise<null>{

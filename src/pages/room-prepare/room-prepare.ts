@@ -27,6 +27,9 @@ export class RoomPreparePage {
       if(this.gameSvc.roomModel.roomStage=='start'){
         this.goGameMainPage();
       }
+      this.gameSvc.onGameStarted().then(()=>{
+        this.goGameMainPage();
+      });
       this.platformSvc.getGameInfo(this.gameSvc.roomModel.gameTemplateId).then(gameInfo=>{
         console.log(gameInfo);
         this.gameInfo=gameInfo;
