@@ -71,7 +71,7 @@ export class Clue {
   clueId: clueId;
   name: string;
   Type: "pic" | "text";
-  uri: uri;
+  content: string;//uri or text
   description: string;
   _id: string;
   usablesId: usableId[]//可对该线索使用的道具
@@ -90,10 +90,11 @@ export class Usable {
   uri: uri;//图片的url
   cd: number;
   category: "item" | "skill";
-  target: "self" | "chosenUser" | roleId;
+  target: "self" | "chosenRole" | roleId;
   lastUsedAt: timestamp;
   amount: number;
-  _id: string
+  _id: string;
+  consumable: boolean;
 }
 
 export class Question {
