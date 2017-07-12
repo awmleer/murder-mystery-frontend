@@ -1,4 +1,4 @@
-import {placeId, roleId, stageId, uri} from "./model";
+import {placeId, roleId, stageId, uri, usableId} from "./model";
 
 export class GameTemplate {
   name:string;
@@ -33,7 +33,7 @@ export class ClueTemplate {
   content: string;
   description: string;
   usables:{
-    usableId: number;
+    usableId: usableId;
   }[];
 
 }

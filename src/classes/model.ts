@@ -1,5 +1,6 @@
 export type timestamp = number;
 export type roleId = number;
+export type usableId = number;
 export type placeId =number;
 export type stageId = number;
 export type uri = string;
@@ -72,7 +73,7 @@ export class Clue {
   uri: uri;
   description: string;
   _id: string;
-  usablesId: number[]//可对该线索使用的道具
+  usablesId: usableId[]//可对该线索使用的道具
 }
 
 export class Notification {
@@ -83,7 +84,7 @@ export class Notification {
 }
 
 export class Usable {
-  usableId: number;
+  usableId: usableId;
   name: string;
   uri: uri;//图片的url
   cd: number;
