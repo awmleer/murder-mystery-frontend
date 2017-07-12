@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {GameService} from "../../services/game.service";
-import {placeId} from "../../classes/model";
+import {GameService} from "../../../services/game.service";
+import {placeId} from "../../../classes/model";
 
 
 @IonicPage()
 @Component({
   selector: 'page-game-survey',
-  templateUrl: 'game-survey.html',
+  templateUrl: 'src/pages/game/game-survey/game-survey.html',
 })
 export class GameSurveyPage {
 

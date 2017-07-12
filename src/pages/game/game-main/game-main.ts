@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {GameCluePage} from "../game-clue/game-clue";
 import {GameService} from "../../../services/game.service";
-import {GameSurveyPage} from "../../game-survey/game-survey";
+import {GameSurveyPage} from "../game-survey/game-survey";
 
 
 @IonicPage()

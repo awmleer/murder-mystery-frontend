@@ -22,7 +22,8 @@ import {RoomPreparePageModule} from "../pages/room-prepare/room-prepare.module";
 import {SocketService} from "../services/socket.service";
 import {GameCluePageModule} from "../pages/game/game-clue/game-clue.module";
 import {GameMainPageModule} from "../pages/game/game-main/game-main.module";
-import {GameSurveyPageModule} from "../pages/game-survey/game-survey.module";
+import {GameSurveyPageModule} from "../pages/game/game-survey/game-survey.module";
+import {GameItemListPageModule} from "../pages/game/game-item-list/game-item-list.module";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {GameSurveyPageModule} from "../pages/game-survey/game-survey.module";
     GameCluePageModule,
     GameMainPageModule,
     GameSurveyPageModule,
+    GameItemListPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
