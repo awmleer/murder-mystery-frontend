@@ -20,7 +20,7 @@ export class GameMainPage {
   ) {}
 
   ionViewWillLoad(){
-    this.gameSvc.freshTemplate();
+    // this.gameSvc.freshTemplate();
   }
 
   goCluePage(){

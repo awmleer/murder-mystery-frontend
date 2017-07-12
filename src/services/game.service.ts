@@ -2,15 +2,13 @@ import {Injectable} from "@angular/core";
 import {SocketService} from "./socket.service";
 import * as jdp from 'jsondiffpatch';
 import {placeId, PlayerModel, RoomModel} from "../classes/model";
-import {GameTemplate} from "../classes/template";
 import {Http} from "@angular/http";
-import {CONFIG} from "../app/config";
+
 
 @Injectable()
 export class GameService {
   roomModel:RoomModel;
   playerModel: PlayerModel;
-  template: GameTemplate;
   private patcher;
 
   constructor(
@@ -47,14 +45,6 @@ export class GameService {
         this.socketSvc.on('gameStarted',data=>{
           resolve();
         });
-      });
-  }
-
-  freshTemplate():Promise<null>{
-    return this.http.get(CONFIG.apiUrl+`/game/${this.roomModel.gameTemplateId}/template/`)
-      .toPromise().then(response=>{
-        this.template=response.json();
-        return;
       });
   }
 

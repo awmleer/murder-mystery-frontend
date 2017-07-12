@@ -2,6 +2,7 @@ export type timestamp = number;
 export type roleId = number;
 export type usableId = number;
 export type placeId =number;
+export type clueId =number;
 export type stageId = number;
 export type uri = string;
 
@@ -67,7 +68,7 @@ export class PlayerDocument {
 }
 
 export class Clue {
-  clueId: number;
+  clueId: clueId;
   name: string;
   Type: "pic" | "text";
   uri: uri;
