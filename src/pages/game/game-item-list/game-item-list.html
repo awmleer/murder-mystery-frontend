@@ -1,12 +1,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>gameItemList</ion-title>
+    <ion-title>物品</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <div *ngFor="let item of (gameSvc.playerModel.usables | where: ['category','item'])">
+    {{item._id}} {{item.name}} x{{item.amount}}
+  </div>
 </ion-content>

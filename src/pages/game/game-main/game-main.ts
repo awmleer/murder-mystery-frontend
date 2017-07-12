@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {GameCluePage} from "../game-clue/game-clue";
 import {GameService} from "../../../services/game.service";
 import {GameSurveyPage} from "../game-survey/game-survey";
+import {GameItemListPage} from "../game-item-list/game-item-list";
 
 
 @IonicPage()
@@ -24,6 +25,10 @@ export class GameMainPage {
 
   goCluePage(){
     this.navCtrl.push(GameCluePage);
+  }
+
+  goItemPage(){
+    this.navCtrl.push(GameItemListPage);
   }
 
   goSurveyPage(){

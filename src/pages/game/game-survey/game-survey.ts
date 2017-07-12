@@ -7,7 +7,7 @@ import {placeId} from "../../../classes/model";
 @IonicPage()
 @Component({
   selector: 'page-game-survey',
-  templateUrl: 'src/pages/game/game-survey/game-survey.html',
+  templateUrl: 'game-survey.html',
 })
 export class GameSurveyPage {
 
