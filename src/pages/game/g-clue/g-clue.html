@@ -8,8 +8,8 @@
 
 
 <ion-content padding>
-  <div *ngFor="let clue of gameSvc.playerModel.clues" style="border: solid 1px #bfbfbf;padding: 10px;">
-    {{clue.name}}({{clue._id}})<br>
+  <div *ngFor="let clue of (gameSvc.playerModel.clues | dictToArray)" style="border: solid 1px #bfbfbf;padding: 10px;">
+    {{clue.name}}({{clue.id}})<br>
     {{clue.description}}<br>
     <img *ngIf="clue.Type=='pic'" [src]="clue.content">
     <a *ngIf="clue.usablesId.length>0" (click)="activateClue(clue)">触发</a>

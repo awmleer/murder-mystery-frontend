@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {roleId} from "../classes/model";
 
 
 @Pipe({
@@ -6,11 +7,11 @@ import { Pipe, PipeTransform } from '@angular/core';
   pure: false
 })
 export class RoleToUserPipe implements PipeTransform {
-  transform(roleId: number, players) {
+  transform(roleId: roleId, players) {
   // transform(roleId: any) {
     for (let userId in players) {
       if (players.hasOwnProperty(userId)) {
-        if (players[userId].roleId == roleId) {
+        if (players[userId].role.id == roleId) {
           return {
             userId:userId,
             username:players[userId].username

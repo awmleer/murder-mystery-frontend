@@ -115,7 +115,7 @@ export interface Notification {
 }
 
 export interface Usable {
-  usableId: usableId;
+  id: usableId;
   name: string;
   uri: uri;//图片的url
   cd: number;
@@ -123,7 +123,6 @@ export interface Usable {
   target: "self" | "chosenRole" | roleId;
   lastUsedAt: timestamp;
   amount: number;
-  _id: string;
   consumable: boolean;
 }
 

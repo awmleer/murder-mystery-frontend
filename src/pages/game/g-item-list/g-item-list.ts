@@ -19,10 +19,10 @@ export class GItemListPage {
   activateItem(item:Usable){
     if(item.target=='chosenUser'){
       this.gameSvc.letUserSelectRole().then(roleId=>{
-        this.gameSvc.activateUsable(item.usableId,roleId);
+        this.gameSvc.activateUsable(item.id,roleId);
       });
     }else{
-      this.gameSvc.activateUsable(item.usableId);
+      this.gameSvc.activateUsable(item.id);
     }
   }
 

@@ -73,10 +73,6 @@ export class GameService {
     });
   }
 
-  letUserSelect(elements:any[], alertTitle:string):Promise<any>{
-
-  }
-
 
   letUserSelectRole():Promise<roleId>{
     return new Promise((resolve, reject) => {
@@ -115,7 +111,7 @@ export class GameService {
         alert.addInput({
           type:'radio',
           label: usable.name,
-          value: usable.usableId.toString(),
+          value: usable.id.toString(),
           checked: false
         });
       }
