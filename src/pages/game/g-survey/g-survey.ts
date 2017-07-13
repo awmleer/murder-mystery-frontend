@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import {GameService} from "../../../services/game.service";
 import {placeId} from "../../../classes/model";
 
 
 @IonicPage()
 @Component({
-  selector: 'page-game-survey',
-  templateUrl: 'game-survey.html',
+  selector: 'page-g-survey',
+  templateUrl: 'g-survey.html',
 })
-export class GameSurveyPage {
+export class GSurveyPage {
 
   constructor(
     private navCtrl: NavController,

@@ -3,7 +3,7 @@ import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angula
 import {PlatformService} from "../../services/platform.service";
 import {GameInfo} from "../../classes/game";
 import {GameService} from "../../services/game.service";
-import {GameMainPage} from "../game/game-main/game-main";
+import {GMainPage} from "../game/g-main/g-main";
 
 
 @IonicPage()
@@ -42,12 +42,12 @@ export class RoomPreparePage {
     this.gameSvc.startGame().then(()=>{
       this.goGameMainPage();
     });
-    // this.modalCtrl.create(GameMainPage).present();
+    // this.modalCtrl.create(GMainPage).present();
   }
 
 
   goGameMainPage(){
-    this.modalCtrl.create(GameMainPage).present();
+    this.modalCtrl.create(GMainPage).present();
   }
 
 

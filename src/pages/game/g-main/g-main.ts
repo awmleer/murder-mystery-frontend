@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import {GameCluePage} from "../game-clue/game-clue";
+import {GCluePage} from "../g-clue/g-clue";
 import {GameService} from "../../../services/game.service";
-import {GameSurveyPage} from "../game-survey/game-survey";
-import {GameItemListPage} from "../game-item-list/game-item-list";
+import {GSurveyPage} from "../g-survey/g-survey";
+import {GItemListPage} from "../g-item-list/g-item-list";
 
 
 @IonicPage()
 @Component({
-  selector: 'page-game-main',
-  templateUrl: 'game-main.html',
+  selector: 'page-g-main',
+  templateUrl: 'g-main.html',
 })
-export class GameMainPage {
+export class GMainPage {
 
   constructor(
     private navCtrl: NavController,
@@ -24,15 +24,15 @@ export class GameMainPage {
   }
 
   goCluePage(){
-    this.navCtrl.push(GameCluePage);
+    this.navCtrl.push(GCluePage);
   }
 
   goItemPage(){
-    this.navCtrl.push(GameItemListPage);
+    this.navCtrl.push(GItemListPage);
   }
 
   goSurveyPage(){
-    this.navCtrl.push(GameSurveyPage);
+    this.navCtrl.push(GSurveyPage);
   }
 
 }

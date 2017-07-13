@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { GameItemListPage } from './game-item-list';
+import { GItemListPage } from './g-item-list';
 import {WherePipe} from "angular-pipes/src/array/where.pipe";
 
 @NgModule({
   declarations: [
-    GameItemListPage,
+    GItemListPage,
     WherePipe
   ],
   imports: [
-    IonicPageModule.forChild(GameItemListPage),
+    IonicPageModule.forChild(GItemListPage),
   ],
   exports: [
-    GameItemListPage
+    GItemListPage
   ]
 })
-export class GameItemListPageModule {}
+export class GItemListPageModule {}

@@ -1,14 +1,14 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController} from 'ionic-angular';
 import {GameService} from "../../../services/game.service";
 import {Clue} from "../../../classes/model";
 
 @IonicPage()
 @Component({
-  selector: 'page-game-clue',
-  templateUrl: 'game-clue.html',
+  selector: 'page-g-clue',
+  templateUrl: 'g-clue.html',
 })
-export class GameCluePage {
+export class GCluePage {
 
   constructor(
     public navCtrl: NavController,

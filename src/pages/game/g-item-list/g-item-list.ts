@@ -6,10 +6,10 @@ import {Usable} from "../../../classes/model";
 
 @IonicPage()
 @Component({
-  selector: 'page-game-item-list',
-  templateUrl: 'game-item-list.html',
+  selector: 'page-g-item-list',
+  templateUrl: 'g-item-list.html',
 })
-export class GameItemListPage {
+export class GItemListPage {
 
   constructor(
     private navCtrl: NavController,

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { GameCluePage } from './game-clue';
+import { GSurveyPage } from './g-survey';
 
 @NgModule({
   declarations: [
-    GameCluePage,
+    GSurveyPage,
   ],
   imports: [
-    IonicPageModule.forChild(GameCluePage),
+    IonicPageModule.forChild(GSurveyPage),
   ],
   exports: [
-    GameCluePage
+    GSurveyPage
   ]
 })
-export class GameCluePageModule {}
+export class GSurveyPageModule {}

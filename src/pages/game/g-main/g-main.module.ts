@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { GameMainPage } from './game-main';
+import { GMainPage } from './g-main';
 import {GameNotificationComponent} from "../../../components/game-notification/game-notification";
 
 @NgModule({
   declarations: [
-    GameMainPage,
+    GMainPage,
     GameNotificationComponent
   ],
   imports: [
-    IonicPageModule.forChild(GameMainPage),
+    IonicPageModule.forChild(GMainPage),
   ],
   exports: [
-    GameMainPage
+    GMainPage
   ]
 })
-export class GameMainPageModule {}
+export class GMainPageModule {}

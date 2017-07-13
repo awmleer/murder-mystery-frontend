@@ -20,10 +20,10 @@ import {PlatformService} from "../services/platform.service";
 import {GameDetailPageModule} from "../pages/game-detail/game-detail.module";
 import {RoomPreparePageModule} from "../pages/room-prepare/room-prepare.module";
 import {SocketService} from "../services/socket.service";
-import {GameCluePageModule} from "../pages/game/game-clue/game-clue.module";
-import {GameMainPageModule} from "../pages/game/game-main/game-main.module";
-import {GameSurveyPageModule} from "../pages/game/game-survey/game-survey.module";
-import {GameItemListPageModule} from "../pages/game/game-item-list/game-item-list.module";
+import {GCluePageModule} from "../pages/game/g-clue/g-clue.module";
+import {GMainPageModule} from "../pages/game/g-main/g-main.module";
+import {GSurveyPageModule} from "../pages/game/g-survey/g-survey.module";
+import {GItemListPageModule} from "../pages/game/g-item-list/g-item-list.module";
 
 @NgModule({
   declarations: [
@@ -40,10 +40,10 @@ import {GameItemListPageModule} from "../pages/game/game-item-list/game-item-lis
     GameDetailPageModule,
     RoomListPageModule,
     RoomPreparePageModule,
-    GameCluePageModule,
-    GameMainPageModule,
-    GameSurveyPageModule,
-    GameItemListPageModule,
+    GCluePageModule,
+    GMainPageModule,
+    GSurveyPageModule,
+    GItemListPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
