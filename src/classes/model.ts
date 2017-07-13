@@ -10,7 +10,15 @@ export class PlayerInRoomModel {
   _id: string;
   userId: string;
   username: string;
-  roleId: roleId;
+  role:{ //选择角色后出现
+    _id: roleId;
+    name: string;
+    necessary: boolean;
+    picture: uri;
+    avatar: uri;
+    description: string;
+    placesCanSurveyId: placeId[];
+  };
   socketId: string; //(""表示未连接或未进入房间)
   stageConfirm: boolean // true:玩家已完成当前回合
 }

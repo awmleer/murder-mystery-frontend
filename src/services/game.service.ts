@@ -3,6 +3,7 @@ import {SocketService} from "./socket.service";
 import * as jdp from 'jsondiffpatch';
 import {placeId, PlayerModel, roleId, RoomModel, usableId} from "../classes/model";
 import {Http} from "@angular/http";
+import {AlertController} from "ionic-angular";
 
 
 @Injectable()
@@ -13,6 +14,7 @@ export class GameService {
 
   constructor(
     private socketSvc: SocketService,
+    private alertCtrl: AlertController,
     private http: Http
   ){
     this.patcher=jdp.create();
@@ -69,6 +71,32 @@ export class GameService {
       usableId: usableId,
       chosenRoleId: chosenRoleId
     });
+  }
+
+
+  letUserSelectRole():Promise<roleId>{
+    return new Promise((resolve, reject) => {
+      let alert = this.alertCtrl.create();
+      alert.setTitle('请选择目标角色');
+      for (let userId in this.roomModel.players) {
+        let role = this.roomModel.players[userId].role;
+        alert.addInput({
+          type:'radio',
+          label: role.name,
+          value: role._id.toString(),
+          checked: false
+        });
+      }
+      alert.addButton('取消');
+      alert.addButton({
+        text: '确定',
+        handler: data=>{
+          resolve(data);
+        }
+      });
+      alert.present();
+    });
+
   }
 
 

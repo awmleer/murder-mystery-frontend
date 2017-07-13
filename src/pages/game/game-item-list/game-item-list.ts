@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController} from 'ionic-angular';
 import {GameService} from "../../../services/game.service";
-import {Usable, usableId} from "../../../classes/model";
+import {Usable} from "../../../classes/model";
 
 
 @IonicPage()
@@ -12,15 +12,18 @@ import {Usable, usableId} from "../../../classes/model";
 export class GameItemListPage {
 
   constructor(
-    public navCtrl: NavController,
+    private navCtrl: NavController,
     private gameSvc: GameService
   ) {}
 
   activateItem(item:Usable){
     if(item.target=='chosenUser'){
-      //TODO
+      this.gameSvc.letUserSelectRole().then(roleId=>{
+        this.gameSvc.activateUsable(item.usableId,roleId);
+      });
+    }else{
+      this.gameSvc.activateUsable(item.usableId);
     }
-    this.gameSvc.activateUsable(item.usableId);
   }
 
 }
