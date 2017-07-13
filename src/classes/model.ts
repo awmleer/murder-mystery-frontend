@@ -4,14 +4,23 @@ export type usableId = number;
 export type placeId =number;
 export type clueId =number;
 export type stageId = number;
+export type userId = string;
+export type propId = number;
 export type uri = string;
 
 
-export class RoomModel {
+
+export interface Element{
+  id: string | number;
+  name: string;
+}
+
+
+export interface RoomModel {
   _id: string;
   gameTemplateId: string;
   players: {
-    [userId:string]: PlayerInRoomModel;
+    [playerId:string]: PlayerInRoomModel;
   };
   roomStage: "prepare" | "start";
   gameStage: number; // -1:未开始 0:阶段0 1:阶段1 ....
@@ -21,21 +30,22 @@ export class RoomModel {
     optionalRolesId: roleId[];// 投票阶段可投的role_id
     description: string;
   };
-  places: Place[];
-  focusRoleId: number; //某些stage的关键角色ID
+  places: {
+    [placeId:number]: Place;
+  };
+  focusRoleId: roleId; //某些stage的关键角色ID
 }
 
-export class PlayerInRoomModel {
-  _id: string;
-  userId: string;
+export interface PlayerInRoomModel {
+  userId: userId;
   username: string;
   role: Role;//选择角色后出现
   socketId: string; //(""表示未连接或未进入房间)
   stageConfirm: boolean // true:玩家已完成当前回合
 }
 
-export class Role {
-  _id: roleId;
+export interface Role extends Element{
+  id: roleId;
   name: string;
   necessary: boolean;
   picture: uri;
@@ -47,7 +57,7 @@ export class Role {
 
 
 
-export class PlayerModel {
+export interface PlayerModel {
   _id: string;
   userId: string;
   username: string;
@@ -62,42 +72,49 @@ export class PlayerModel {
 
   questions: Question[]; //问卷阶段该角色的问题
   documents: PlayerDocument[];//人物介绍，根据阶段显示，阶段未到的document不在此数组中
-  clues: Clue[];
-  usables: Usable[];
+  clues: {
+    [clueId:number]: Clue;
+  };
+  usables: {
+    [usableId:number]: Usable;
+  };
   notifications: Notification[];
   props:{
-    _id: number;
-    name: string;
-    value: number;
-    specialType: "none" //暂定
-  }[];
+    [propId:number]: Prop;
+  };
 }
 
-export class PlayerDocument {
+export interface PlayerDocument {
   _id: string;
   content: string;
   stage: number;
   Type: "pic" | "text"
 }
 
-export class Clue {
-  clueId: clueId;
+export interface Prop {
+  id: propId;
+  name: string;
+  value: number;
+  specialType: "none" //暂定
+}
+
+export interface Clue {
+  id: clueId;
   name: string;
   Type: "pic" | "text";
   content: string;//uri or text
   description: string;
-  _id: string;
   usablesId: usableId[]//可对该线索使用的道具
 }
 
-export class Notification {
+export interface Notification {
   time: timestamp;
   from: roleId;
   Type: "text" | "pic"; // 暂时只有text
   content: string
 }
 
-export class Usable {
+export interface Usable {
   usableId: usableId;
   name: string;
   uri: uri;//图片的url
@@ -110,7 +127,7 @@ export class Usable {
   consumable: boolean;
 }
 
-export class Question {
+export interface Question {
   _id: number;//从0开始递增
   question: string;
   choices: {
@@ -119,8 +136,8 @@ export class Question {
   }[];
 }
 
-export class Place {
-  _id: placeId;
+export interface Place {
+  id: placeId;
   name: string;
   description: string;
   costAp: number;

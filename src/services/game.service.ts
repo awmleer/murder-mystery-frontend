@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {SocketService} from "./socket.service";
 import * as jdp from 'jsondiffpatch';
-import {placeId, PlayerModel, roleId, RoomModel, usableId} from "../classes/model";
+import {placeId, PlayerModel, Element, roleId, RoomModel, usableId} from "../classes/model";
 import {Http} from "@angular/http";
 import {AlertController} from "ionic-angular";
 
@@ -73,17 +73,21 @@ export class GameService {
     });
   }
 
+  letUserSelect(elements:any[], alertTitle:string):Promise<any>{
+
+  }
+
 
   letUserSelectRole():Promise<roleId>{
     return new Promise((resolve, reject) => {
       let alert = this.alertCtrl.create();
-      alert.setTitle('请选择角色');//TODO: use param to set title
+      alert.setTitle('请选择角色');
       for (let userId in this.roomModel.players) {
         let role = this.roomModel.players[userId].role;
         alert.addInput({
           type:'radio',
           label: role.name,
-          value: role._id.toString(),
+          value: role.id.toString(),
           checked: false
         });
       }
