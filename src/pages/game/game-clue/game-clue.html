@@ -12,5 +12,6 @@
     {{clue.name}}({{clue._id}})<br>
     {{clue.description}}<br>
     <img *ngIf="clue.Type=='pic'" [src]="clue.content">
+    <a *ngIf="clue.usablesId.length>0" (click)="activateClue(clue)">触发</a>
   </div>
 </ion-content>

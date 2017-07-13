@@ -6,22 +6,6 @@ export type clueId =number;
 export type stageId = number;
 export type uri = string;
 
-export class PlayerInRoomModel {
-  _id: string;
-  userId: string;
-  username: string;
-  role:{ //选择角色后出现
-    _id: roleId;
-    name: string;
-    necessary: boolean;
-    picture: uri;
-    avatar: uri;
-    description: string;
-    placesCanSurveyId: placeId[];
-  };
-  socketId: string; //(""表示未连接或未进入房间)
-  stageConfirm: boolean // true:玩家已完成当前回合
-}
 
 export class RoomModel {
   _id: string;
@@ -40,6 +24,27 @@ export class RoomModel {
   places: Place[];
   focusRoleId: number; //某些stage的关键角色ID
 }
+
+export class PlayerInRoomModel {
+  _id: string;
+  userId: string;
+  username: string;
+  role: Role;//选择角色后出现
+  socketId: string; //(""表示未连接或未进入房间)
+  stageConfirm: boolean // true:玩家已完成当前回合
+}
+
+export class Role {
+  _id: roleId;
+  name: string;
+  necessary: boolean;
+  picture: uri;
+  avatar: uri;
+  description: string;
+  placesCanSurveyId: placeId[];
+}
+
+
 
 
 export class PlayerModel {

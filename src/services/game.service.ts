@@ -77,7 +77,7 @@ export class GameService {
   letUserSelectRole():Promise<roleId>{
     return new Promise((resolve, reject) => {
       let alert = this.alertCtrl.create();
-      alert.setTitle('请选择目标角色');
+      alert.setTitle('请选择角色');//TODO: use param to set title
       for (let userId in this.roomModel.players) {
         let role = this.roomModel.players[userId].role;
         alert.addInput({
@@ -96,7 +96,34 @@ export class GameService {
       });
       alert.present();
     });
+  }
 
+
+  letUserSelectUsable(usablesId:usableId[]):Promise<roleId>{
+    return new Promise((resolve, reject) => {
+      let alert = this.alertCtrl.create();
+      alert.setTitle('请选择物品');//TODO: use param to set title
+      for (let usableId in usablesId) {
+        let usable = this.playerModel.usables[usableId];
+        if (!usable) { // if player doesn't have this usable
+          continue;
+        }
+        alert.addInput({
+          type:'radio',
+          label: usable.name,
+          value: usable.usableId.toString(),
+          checked: false
+        });
+      }
+      alert.addButton('取消');
+      alert.addButton({
+        text: '确定',
+        handler: data=>{
+          resolve(data);
+        }
+      });
+      alert.present();
+    });
   }
 
 
