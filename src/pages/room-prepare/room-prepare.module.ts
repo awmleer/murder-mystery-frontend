@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { RoomPreparePage } from './room-prepare';
-import {RoleToUserPipe} from "../../pipes/role-to-user.pipe";
+import {PipesModule} from "../../pipes/pipes.module";
 
 @NgModule({
   declarations: [
-    RoomPreparePage,
-    RoleToUserPipe,
+    RoomPreparePage
   ],
   imports: [
+    PipesModule,
     IonicPageModule.forChild(RoomPreparePage),
   ],
   exports: [

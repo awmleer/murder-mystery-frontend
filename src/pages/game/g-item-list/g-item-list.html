@@ -8,8 +8,8 @@
 
 
 <ion-content padding>
-  <div *ngFor="let item of (gameSvc.playerModel.usables | where: ['category','item'])">
-    {{item._id}} {{item.name}} x{{item.amount}}
+  <div *ngFor="let item of (gameSvc.playerModel.usables | dictToArray | where: ['category','item'])">
+    {{item.id}} {{item.name}} x{{item.amount}}
     <a (click)="activateItem(item)">使用</a>
   </div>
 </ion-content>

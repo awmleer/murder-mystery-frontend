@@ -59,8 +59,9 @@ export interface Role extends Element{
 
 export interface PlayerModel {
   // _id: string;
-  userId: string;
+  id: string;
   username: string;
+  name: string;
   roleId: roleId;
   socketId: string;
   lastSurveyedAt: timestamp;//上次调查时间

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { GCluePage } from './g-clue';
-import {DictToArrayPipe} from "../../../pipes/dict-to-array";
+import {PipesModule} from "../../../pipes/pipes.module";
 
 @NgModule({
   declarations: [
-    GCluePage,
-    DictToArrayPipe
+    GCluePage
   ],
   imports: [
+    PipesModule,
     IonicPageModule.forChild(GCluePage),
   ],
   exports: [

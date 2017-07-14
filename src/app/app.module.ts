@@ -31,7 +31,7 @@ import {GItemListPageModule} from "../pages/game/g-item-list/g-item-list.module"
     AboutPage,
     MinePage,
     HomePage,
-    TabsPage
+    TabsPage,
   ],
   imports: [
     BrowserModule,

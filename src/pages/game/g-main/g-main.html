@@ -14,15 +14,15 @@
 
   阶段开始于：{{gameSvc.roomModel.stageBeginAt}}
   <hr>
-  用户ID：{{gameSvc.playerModel.userId}}<br>
+  用户ID：{{gameSvc.playerModel.id}}<br>
   用户名：{{gameSvc.playerModel.username}}<br>
-  playerId：{{gameSvc.playerModel._id}}<<br>
+  名字：{{gameSvc.playerModel.name}}<br>
   上次调查事件：{{gameSvc.playerModel.lastSurveyedAt}}<br>
   笔记：{{gameSvc.playerModel.note}}<br>
   <hr>
   属性列表<br>
-  <div *ngFor="let prop of gameSvc.playerModel.props">
-    {{prop.name}}({{prop._id}})：{{prop.value}}
+  <div *ngFor="let prop of (gameSvc.playerModel.props|dictToArray)">
+    {{prop.name}}({{prop.id}})：{{prop.value}}
   </div>
   <button ion-button block (click)="goCluePage()">线索</button>
   <button ion-button block (click)="goItemPage()">物品</button>

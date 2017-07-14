@@ -10,8 +10,11 @@ export class DictToArrayPipe implements PipeTransform {
   transform(dict: object) {
     let arr=[];
     for (let key in dict) {
-      dict['key'] = key;
-      arr.push(dict);
+      if (dict.hasOwnProperty(key)) {
+        let element = dict[key];
+        element['key'] = key;
+        arr.push(element);
+      }
     }
     return arr;
   }
