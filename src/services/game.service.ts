@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {SocketService} from "./socket.service";
 import * as jdp from 'jsondiffpatch';
-import {placeId, PlayerModel, Element, roleId, RoomModel, usableId} from "../classes/model";
+import {placeId, PlayerModel, Element, roleId, RoomModel, usableId, clueId} from "../classes/model";
 import {Http} from "@angular/http";
 import {AlertController} from "ionic-angular";
 
@@ -73,6 +73,13 @@ export class GameService {
     });
   }
 
+  activateClue(clueId:clueId, usableId:usableId):Promise<null>{
+    return this.socketSvc.inform('activateClue',{
+      clueId:clueId,
+      usableId: usableId
+    });
+  }
+
 
   letUserSelectRole():Promise<roleId>{
     return new Promise((resolve, reject) => {
@@ -99,7 +106,7 @@ export class GameService {
   }
 
 
-  letUserSelectUsable(usablesId:usableId[]):Promise<roleId>{
+  letUserSelectUsable(usablesId:usableId[]):Promise<usableId>{
     return new Promise((resolve, reject) => {
       let alert = this.alertCtrl.create();
       alert.setTitle('请选择物品');//TODO: use param to set title
@@ -119,7 +126,9 @@ export class GameService {
       alert.addButton({
         text: '确定',
         handler: data=>{
-          resolve(data);
+          if(typeof data != 'undefined'){
+            resolve(data);
+          }
         }
       });
       alert.present();

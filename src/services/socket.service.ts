@@ -49,7 +49,6 @@ export class SocketService {
         if (data['status'] == 'ok') {
           resolve();
         }else{
-          reject(data['payload']);
           if (data['payload']) {
             this.toastSvc.toast(data['payload']);
           }
@@ -57,7 +56,6 @@ export class SocketService {
       });
       console.log(eventName + ' informed');
     });
-
   }
 
   on(eventName:string,callback:(data)=>void){
