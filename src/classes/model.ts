@@ -17,10 +17,10 @@ export interface Element{
 
 
 export interface RoomModel {
-  _id: string;
+  // _id: string;
   gameTemplateId: string;
   players: {
-    [playerId:string]: PlayerInRoomModel;
+    [userId:string]: Player;
   };
   roomStage: "prepare" | "start";
   gameStage: number; // -1:未开始 0:阶段0 1:阶段1 ....
@@ -36,8 +36,8 @@ export interface RoomModel {
   focusRoleId: roleId; //某些stage的关键角色ID
 }
 
-export interface PlayerInRoomModel {
-  userId: userId;
+export interface Player {
+  id: userId;
   username: string;
   role: Role;//选择角色后出现
   socketId: string; //(""表示未连接或未进入房间)
@@ -58,7 +58,7 @@ export interface Role extends Element{
 
 
 export interface PlayerModel {
-  _id: string;
+  // _id: string;
   userId: string;
   username: string;
   roleId: roleId;
@@ -127,7 +127,7 @@ export interface Usable {
 }
 
 export interface Question {
-  _id: number;//从0开始递增
+  id: number;//从0开始递增
   question: string;
   choices: {
     _id: number; //从0开始递增
