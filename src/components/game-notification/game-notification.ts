@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {GameService} from "../../services/game.service";
 
 
@@ -8,8 +8,14 @@ import {GameService} from "../../services/game.service";
 })
 export class GameNotificationComponent {
 
+  expanding:boolean=false;
+
   constructor(
     private gameSvc: GameService
   ) {}
+
+  toggleExpand(){
+    this.expanding=!this.expanding;
+  }
 
 }

@@ -1,5 +1,29 @@
 <div>
-  <div *ngFor="let notification of gameSvc.playerModel.notifications">
-    {{notification.content}}
+  <div *ngIf="!expanding" class="folding" (click)="toggleExpand()">
+    basic part
+  </div>
+  <div [hidden]="!expanding" class="expanding" (click)="toggleExpand()">
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    expanding part<br>
+    <div *ngFor="let notification of gameSvc.playerModel.notifications">
+      {{notification.content}}
+    </div>
   </div>
 </div>
