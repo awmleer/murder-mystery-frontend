@@ -39,9 +39,7 @@ export class RoomPreparePage {
   }
 
   startGame(){
-    this.gameSvc.startGame().then(()=>{
-      this.goGameMainPage();
-    });
+    this.gameSvc.startGame();
     // this.modalCtrl.create(GMainPage).present();
   }
 
