@@ -1,20 +1,16 @@
 export type timestamp = number;
-export type roleId = number;
-export type usableId = number;
-export type placeId =number;
-export type clueId =number;
-export type stageId = number;
-export type userId = string;
-export type propId = number;
 export type uri = string;
 
 
-
+//Element是那些可以在弹框中进行选择的东西
 export interface Element{
   id: string | number;
   name: string;
 }
 
+
+
+/* Room */
 
 export interface RoomModel {
   // _id: string;
@@ -23,7 +19,7 @@ export interface RoomModel {
     [userId:string]: Player;
   };
   roomStage: "prepare" | "start";
-  gameStage: number; // -1:未开始 0:阶段0 1:阶段1 ....
+  gameStage: stageId; // -1:未开始 0:阶段0 1:阶段1 ....
   stageBeginAt: timestamp;
   roleAvailable: number[]; // 可选角色
   vote: {
@@ -33,9 +29,18 @@ export interface RoomModel {
   places: {
     [placeId:number]: Place;
   };
+  stages: Stage[];
   focusRoleId: roleId; //某些stage的关键角色ID
 }
 
+
+export type stageId = number;
+export interface Stage {
+  id: stageId;
+  name: string;
+}
+
+export type userId = string;
 export interface Player {
   id: userId;
   username: string;
@@ -44,6 +49,7 @@ export interface Player {
   stageConfirm: boolean // true:玩家已完成当前回合
 }
 
+export type roleId = number;
 export interface Role extends Element{
   id: roleId;
   name: string;
@@ -56,6 +62,7 @@ export interface Role extends Element{
 
 
 
+/* Player */
 
 export interface PlayerModel {
   // _id: string;
@@ -83,6 +90,9 @@ export interface PlayerModel {
   props:{
     [propId:number]: Prop;
   };
+  interactions:{
+    [interactionId:string]: Interaction;
+  };
 }
 
 export interface PlayerDocument {
@@ -92,6 +102,7 @@ export interface PlayerDocument {
   Type: "pic" | "text"
 }
 
+export type propId = number;
 export interface Prop {
   id: propId;
   name: string;
@@ -99,6 +110,7 @@ export interface Prop {
   specialType: "none" //暂定
 }
 
+export type clueId =number;
 export interface Clue {
   id: clueId;
   name: string;
@@ -115,7 +127,8 @@ export interface Notification {
   content: string
 }
 
-export interface Usable {
+export type usableId = number;
+export interface Usable extends Element{
   id: usableId;
   name: string;
   uri: uri;//图片的url
@@ -136,10 +149,26 @@ export interface Question {
   }[];
 }
 
+export type placeId =number;
 export interface Place {
   id: placeId;
   name: string;
   description: string;
   costAp: number;
   surveySuccPsb: number;
+}
+
+
+/* Interaction */
+
+export type interactionId = string;
+export interface Interaction {
+  id: interactionId;
+  title: string;
+  subtitle: string;
+  fromRoleId: roleId;
+  options: {
+    id: number;
+    text: string;
+  }[];
 }

@@ -21,10 +21,12 @@ export class GameService {
     console.log(this.patcher);
     this.socketSvc.on('changeRoomModel',(data)=>{
       this.roomModel=this.patcher.patch(this.roomModel,data);
+      console.log('Room model changed');
       console.log(this.roomModel);
     });
     this.socketSvc.on('changePlayerModel',(data)=>{
       this.playerModel=this.patcher.patch(this.playerModel,data);
+      console.log('Player model changed');
       console.log(this.playerModel);
     });
   }
