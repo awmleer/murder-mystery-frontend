@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {SocketService} from "./socket.service";
 import * as jdp from 'jsondiffpatch';
-import {placeId, PlayerModel, Element, roleId, RoomModel, usableId, clueId} from "../classes/model";
+import {placeId, PlayerModel, roleId, RoomModel, usableId, clueId, interactionId, Interaction} from "../classes/model";
 import {Http} from "@angular/http";
 import {AlertController} from "ionic-angular";
 
@@ -10,6 +10,7 @@ import {AlertController} from "ionic-angular";
 export class GameService {
   roomModel:RoomModel;
   playerModel: PlayerModel;
+  currentInteractionId: interactionId=null;
   private patcher;
 
   constructor(
@@ -26,9 +27,61 @@ export class GameService {
     });
     this.socketSvc.on('changePlayerModel',(data)=>{
       this.playerModel=this.patcher.patch(this.playerModel,data);
+      if (data['interactions']) {//不论是增加interaction还是删除都会触发handle方法
+        this.handleInteraction();
+      }
       console.log('Player model changed');
       console.log(this.playerModel);
     });
+  }
+
+  // nextInteraction(){
+  //   let interactionIds = Object.keys(this.playerModel.interactions);
+  //   if (this.currentInteractionId == null && interactionIds.length>0) {
+  //     this.currentInteractionId=interactionIds[0];
+  //     this.handleInteraction().then(()=>{
+  //       this.currentInteractionId=null;
+  //       this.nextInteraction();
+  //     },()=>{
+  //       this.currentInteractionId=null;
+  //       this.nextInteraction();
+  //     }).catch(()=>{
+  //       this.currentInteractionId=null;
+  //       this.nextInteraction();
+  //     });
+  //   }
+  // }
+
+  handleInteraction(){
+      let interactionIds = Object.keys(this.playerModel.interactions);
+      if (this.currentInteractionId == null && interactionIds.length>0) {
+        this.currentInteractionId = interactionIds[0];
+      }
+      let interaction:Interaction =this.playerModel.interactions[this.currentInteractionId];
+      let alert = this.alertCtrl.create();
+      alert.setTitle(interaction.title);
+      alert.setSubTitle(interaction.subtitle);
+      for (let i in interaction.options) {
+        let option = interaction.options[i];
+        alert.addInput({
+          type:'radio',
+          label: option.text,
+          value: option.id.toString(),
+          checked: false
+        });
+      }
+      // alert.addButton('取消');//TODO 是否需要cancelable？
+      alert.addButton({
+        text: '确定',
+        handler: data=>{
+          this.currentInteractionId=null;
+          this.socketSvc.inform('itrctRes',{
+            'interactionId': this.currentInteractionId,
+            'optionId': data
+          });
+        }
+      });
+      alert.present();
   }
 
 
@@ -45,11 +98,11 @@ export class GameService {
   }
 
   onGameStarted():Promise<null>{
-      return new Promise(resolve => {
-        this.socketSvc.on('gameStarted',data=>{
-          resolve();
-        });
+    return new Promise(resolve => {
+      this.socketSvc.on('gameStarted',data=>{
+        resolve();
       });
+    });
   }
 
   selectRole(roleId){

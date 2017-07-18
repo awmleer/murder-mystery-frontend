@@ -151,7 +151,7 @@ export interface Question {
 
 export type placeId =number;
 export interface Place {
-  id: placeId;
+  // id: placeId;
   name: string;
   description: string;
   costAp: number;
