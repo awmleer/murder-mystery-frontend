@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "node"
+install:
+  - npm install -g ionic
+  - npm install
+script:
+  - npm run build
+cache:
+  directories:
+    - "node_modules"
+addons:
+  ssh_known_hosts: 123.206.177.174
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: rsync -avz $TRAVIS_BUILD_DIR/www/* root@123.206.177.174:/var/www/html/murder-mystery/frontend/
+  on:
+    branch: master
+notifications:
+  email:
+    on_success: never
+    on_failure: always
