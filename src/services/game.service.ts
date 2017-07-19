@@ -4,6 +4,7 @@ import * as jdp from 'jsondiffpatch';
 import {placeId, PlayerModel, roleId, RoomModel, usableId, clueId, interactionId, Interaction} from "../classes/model";
 import {Http} from "@angular/http";
 import {AlertController} from "ionic-angular";
+import {ToastService} from "./toast.service";
 
 
 @Injectable()
@@ -16,6 +17,7 @@ export class GameService {
   constructor(
     private socketSvc: SocketService,
     private alertCtrl: AlertController,
+    private toastSvc: ToastService,
     private http: Http
   ){
     this.patcher=jdp.create();
@@ -115,9 +117,14 @@ export class GameService {
     return this.socketSvc.inform('startGame');
   }
 
-  survey(placeId:placeId):Promise<null>{
+  survey(placeId:placeId|string):Promise<null>{
+    if (typeof placeId=='string'){
+      placeId=parseInt(placeId);
+    }
     return this.socketSvc.inform('survey',{
       placeId: placeId
+    }).then(()=>{
+      this.toastSvc.toast('调查成功');
     });
   }
 
@@ -125,6 +132,8 @@ export class GameService {
     return this.socketSvc.inform('activateUsable',{
       usableId: usableId,
       chosenRoleId: chosenRoleId
+    }).then(()=>{
+      this.toastSvc.toast('物品使用成功');
     });
   }
 
@@ -132,6 +141,8 @@ export class GameService {
     return this.socketSvc.inform('activateClue',{
       clueId:clueId,
       usableId: usableId
+    }).then(()=>{
+      this.toastSvc.toast('线索触发成功');
     });
   }
 

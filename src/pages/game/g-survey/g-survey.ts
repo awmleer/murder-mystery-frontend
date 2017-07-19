@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import {GameService} from "../../../services/game.service";
-import {placeId} from "../../../classes/model";
 
 
 @IonicPage()
@@ -17,7 +16,7 @@ export class GSurveyPage {
     // public navParams: NavParams
   ) {}
 
-  survey(placeId:placeId){
+  survey(placeId){
     this.gameSvc.survey(placeId);
   }
 
