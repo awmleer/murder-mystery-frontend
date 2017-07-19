@@ -17,7 +17,7 @@ export class GItemListPage {
   ) {}
 
   activateItem(item:Usable){
-    if(item.target=='chosenUser'){
+    if(item.target=='chosenRole'){
       this.gameSvc.letUserSelectRole().then(roleId=>{
         this.gameSvc.activateUsable(item.id,roleId);
       });
