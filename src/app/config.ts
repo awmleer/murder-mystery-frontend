@@ -1,6 +1,4 @@
 export const CONFIG = {
-  // socketUrl:'http://123.206.177.174:3001',
-  socketUrl:'/',
+  socketUrl:'/socket',
   apiUrl:'/api'
-  // apiUrl:'http://123.206.177.174:3001'
 };
