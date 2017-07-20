@@ -76,11 +76,11 @@ export class GameService {
       alert.addButton({
         text: '确定',
         handler: data=>{
-          this.currentInteractionId=null;
           this.socketSvc.inform('itrctRes',{
             'interactionId': this.currentInteractionId,
             'optionId': data
           });
+          this.currentInteractionId=null;
         }
       });
       alert.present();

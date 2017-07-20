@@ -22,6 +22,9 @@ export class GMainPage {
   ionViewWillLoad(){
     // this.gameSvc.freshTemplate();
   }
+  ionViewDidLoad(){
+    this.gameSvc.handleInteraction();
+  }
 
   goCluePage(){
     this.navCtrl.push(GCluePage);
