@@ -29,15 +29,33 @@ export interface RoomModel {
   places: {
     [placeId:number]: Place;
   };
-  stages: Stage[];
+  stages: StageBrief[];
+  currentStage: Stage;
   focusRoleId: roleId; //某些stage的关键角色ID
 }
 
 
 export type stageId = number;
+export interface StageBrief {
+  id: stageId;
+  name: string;
+}
 export interface Stage {
   id: stageId;
   name: string;
+  description: string;
+  mode: 'fillForm' | 'public' | 'singleForm' | 'countDown' | 'allConfirmed' | 'countDownWithConfirm' | 'singleConfirm';
+  duration: number;
+  vote: {
+    optionalRolesId: roleId[];
+    description: string;
+  };
+  singleFormOptionalRolesId: roleId[];
+  focusRoleId: roleId;
+  canSurvey: boolean;
+  canSkill: boolean;
+  canItem: boolean;
+  canTrade: boolean;
 }
 
 export type userId = string;
