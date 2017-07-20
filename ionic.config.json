@@ -5,7 +5,7 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "http://123.206.177.174:3001"
+      "proxyUrl": "http://mm.zjuyy.cn/api"
     }
   ]
 }
