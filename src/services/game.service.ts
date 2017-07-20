@@ -78,7 +78,7 @@ export class GameService {
         handler: data=>{
           this.socketSvc.inform('itrctRes',{
             'interactionId': this.currentInteractionId,
-            'optionId': data
+            'optionId': parseInt(data)
           });
           this.currentInteractionId=null;
         }
