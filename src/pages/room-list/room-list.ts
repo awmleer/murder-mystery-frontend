@@ -36,7 +36,7 @@ export class RoomListPage {
   enterRoom(roomId:string){
     this.platformSvc.enterRoom(roomId).then(()=>{
       this.navCtrl.push(RoomPreparePage);
-    });
+    },()=>{});
   }
 
 
