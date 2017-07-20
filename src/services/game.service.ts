@@ -56,8 +56,11 @@ export class GameService {
 
   handleInteraction(){
       let interactionIds = Object.keys(this.playerModel.interactions);
+    console.log(interactionIds);
       if (this.currentInteractionId == null && interactionIds.length>0) {
         this.currentInteractionId = interactionIds[0];
+      }else {
+        return;
       }
       let interaction:Interaction =this.playerModel.interactions[this.currentInteractionId];
       let alert = this.alertCtrl.create();
