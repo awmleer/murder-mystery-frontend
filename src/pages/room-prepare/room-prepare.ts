@@ -45,7 +45,9 @@ export class RoomPreparePage {
 
 
   goGameMainPage(){
-    this.modalCtrl.create(GMainPage).present();
+    this.modalCtrl.create(GMainPage).present().then(()=>{
+      this.navCtrl.popToRoot();
+    });
   }
 
 
