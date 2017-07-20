@@ -118,9 +118,7 @@ export class GameService {
   }
 
   survey(placeId:placeId|string):Promise<null>{
-    if (typeof placeId=='string'){
-      placeId=parseInt(placeId);
-    }
+    if (typeof placeId=='string') placeId=parseInt(placeId);
     return this.socketSvc.inform('survey',{
       placeId: placeId
     }).then(()=>{
@@ -128,7 +126,9 @@ export class GameService {
     });
   }
 
-  activateUsable(usableId:usableId,chosenRoleId?:roleId):Promise<null>{
+  activateUsable(usableId:usableId|string,chosenRoleId?:roleId|string):Promise<null>{
+    if (typeof usableId=='string') usableId=parseInt(usableId);
+    if (typeof chosenRoleId=='string') chosenRoleId=parseInt(chosenRoleId);
     return this.socketSvc.inform('activateUsable',{
       usableId: usableId,
       chosenRoleId: chosenRoleId
@@ -137,7 +137,9 @@ export class GameService {
     });
   }
 
-  activateClue(clueId:clueId, usableId:usableId):Promise<null>{
+  activateClue(clueId:clueId|string, usableId:usableId|string):Promise<null>{
+    if (typeof clueId=='string') clueId=parseInt(clueId);
+    if (typeof usableId=='string') usableId=parseInt(usableId);
     return this.socketSvc.inform('activateClue',{
       clueId:clueId,
       usableId: usableId
