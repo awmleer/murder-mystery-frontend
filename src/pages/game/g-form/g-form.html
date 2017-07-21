@@ -9,4 +9,30 @@
 
 <ion-content padding>
 
+  <ion-list radio-group [(ngModel)]="chosenIds[i]" *ngFor="let question of gameSvc.playerModel.questions; let i=index;">
+    <ion-list-header>
+      {{question.title}}
+    </ion-list-header>
+    <ion-item>
+      <ion-note>{{question.subtitle}}</ion-note>
+    </ion-item>
+    <ion-item *ngFor="let choice of question.choices">
+      <ion-label>{{choice.text}}</ion-label>
+      <ion-radio [value]="choice._id"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <ion-list radio-group [(ngModel)]="chosenIds[i]" *ngIf="gameSvc.roomModel.vote">
+    <ion-list-header>
+      投票
+    </ion-list-header>
+    <ion-item>
+      <ion-note>{{gameSvc.roomModel.vote.description}}</ion-note>
+    </ion-item>
+    <ion-item *ngFor="let roleId of gameSvc.roomModel.vote.optionalRolesId">
+      <ion-label>{{roleId | roleToUser}}</ion-label>
+      <ion-radio [value]="roleId"></ion-radio>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

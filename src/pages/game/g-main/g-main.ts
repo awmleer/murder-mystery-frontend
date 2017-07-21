@@ -24,6 +24,7 @@ export class GMainPage {
   }
   ionViewDidLoad(){
     this.gameSvc.handleInteraction();
+    this.gameSvc.handleStage();
   }
 
   goCluePage(){

@@ -5,7 +5,6 @@ import {placeId, PlayerModel, roleId, RoomModel, usableId, clueId, interactionId
 import {Http} from "@angular/http";
 import {AlertController, Modal, ModalController} from "ionic-angular";
 import {ToastService} from "./toast.service";
-import {MinePage} from "../pages/mine/mine";
 import {GFormPage} from "../pages/game/g-form/g-form";
 
 

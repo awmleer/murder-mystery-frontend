@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
+import {GameService} from "../../../services/game.service";
+import {roleId} from "../../../classes/model";
 
 
 @IonicPage()
@@ -8,9 +10,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: './g-form.html',
 })
 export class GFormPage {
+  chosenIds: number[]=[];
+  voteRoleId: roleId;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public gameSvc: GameService
+  ) {}
 
 
 }

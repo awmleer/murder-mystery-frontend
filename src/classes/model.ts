@@ -161,7 +161,8 @@ export interface Usable extends Element{
 
 export interface Question {
   id: number;//从0开始递增
-  question: string;
+  title: string;
+  subtitle: string;
   choices: {
     _id: number; //从0开始递增
     text: string
