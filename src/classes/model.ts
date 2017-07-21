@@ -1,5 +1,6 @@
 export type timestamp = number;
 export type uri = string;
+export type stageMode = 'fillForm' | 'public' | 'singleForm' | 'countDown' | 'allConfirmed' | 'countDownWithConfirm' | 'singleConfirm';
 
 
 //Element是那些可以在弹框中进行选择的东西
@@ -44,7 +45,7 @@ export interface Stage {
   id: stageId;
   name: string;
   description: string;
-  mode: 'fillForm' | 'public' | 'singleForm' | 'countDown' | 'allConfirmed' | 'countDownWithConfirm' | 'singleConfirm';
+  mode: stageMode;
   duration: number;
   vote: {
     optionalRolesId: roleId[];

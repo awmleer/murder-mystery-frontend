@@ -3,11 +3,13 @@ import { IonicPageModule } from 'ionic-angular';
 import { GMainPage } from './g-main';
 import {GameNotificationComponent} from "../../../components/game-notification/game-notification";
 import {PipesModule} from "../../../pipes/pipes.module";
+import {ShowConfirmStagePipe} from "./showConfirmStage.pipe";
 
 @NgModule({
   declarations: [
     GMainPage,
-    GameNotificationComponent
+    GameNotificationComponent,
+    ShowConfirmStagePipe
   ],
   imports: [
     PipesModule,
