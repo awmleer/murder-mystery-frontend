@@ -5,7 +5,6 @@ import {placeId, PlayerModel, roleId, RoomModel, usableId, clueId, interactionId
 import {Http} from "@angular/http";
 import {AlertController, Modal, ModalController} from "ionic-angular";
 import {ToastService} from "./toast.service";
-import {GFormPage} from "../pages/game/g-form/g-form";
 
 
 @Injectable()
@@ -13,8 +12,8 @@ export class GameService {
   roomModel:RoomModel;
   playerModel: PlayerModel;
   currentInteractionId: interactionId=null;
+  formModal:Modal;
   private patcher;
-  private formModal:Modal;
 
   constructor(
     private socketSvc: SocketService,
@@ -44,13 +43,14 @@ export class GameService {
   }
 
   handleStage(){
-    if (this.formModal) {
-      this.formModal.dismiss();
-    }
+    this.formModal.dismiss();
     let mode = this.roomModel.currentStage.mode;
     if (mode=='fillForm' || mode=='singleForm') {
-      this.formModal=this.modalCtrl.create(GFormPage);
-      this.formModal.present();
+      this.formModal.present().then(()=>{
+        this.formModal.dismiss().then(()=>{
+          this.formModal.present();
+        })
+      });
     }
   }
 

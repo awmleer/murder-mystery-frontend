@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import {IonicPage, NavController} from 'ionic-angular';
 import {GameService} from "../../../services/game.service";
 import {roleId} from "../../../classes/model";
 
