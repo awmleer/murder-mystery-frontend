@@ -8,7 +8,8 @@
 
 <ion-content>
   <p *ngIf="accountService.user==null">尚未登录</p>
-  {{accountService.user?._id}}
+  id：{{accountService.user?._id}}<br>
+  phone：{{accountService.user?.phone}}<br>
   <button ion-button block (click)="login()">登录测试</button>
   <button ion-button block (click)="login2()">登录测试2</button>
 </ion-content>

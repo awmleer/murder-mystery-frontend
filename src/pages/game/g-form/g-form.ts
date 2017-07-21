@@ -5,7 +5,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-g-form',
-  templateUrl: 'src/pages/game/g-form/g-form.html',
+  templateUrl: './g-form.html',
 })
 export class GFormPage {
 

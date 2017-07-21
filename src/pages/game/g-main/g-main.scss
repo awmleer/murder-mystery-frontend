@@ -1,6 +1,6 @@
 page-g-main {
-  ion-content{
-    padding-bottom: 50px;
+  .scroll-content{
+    padding-bottom: 60px!important;
   }
   game-notification{
     position: fixed;
@@ -8,6 +8,6 @@ page-g-main {
     bottom:0;
     left:0;
     width:100%;
-    background: #bfbfbf;//just for debug
+    background: #e2e2e2;//just for debug
   }
 }
