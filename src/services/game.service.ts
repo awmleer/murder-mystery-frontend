@@ -3,8 +3,10 @@ import {SocketService} from "./socket.service";
 import * as jdp from 'jsondiffpatch';
 import {placeId, PlayerModel, roleId, RoomModel, usableId, clueId, interactionId, Interaction} from "../classes/model";
 import {Http} from "@angular/http";
-import {AlertController} from "ionic-angular";
+import {AlertController, Modal, ModalController} from "ionic-angular";
 import {ToastService} from "./toast.service";
+import {MinePage} from "../pages/mine/mine";
+import {GFormPage} from "../pages/game/g-form/g-form";
 
 
 @Injectable()
@@ -13,17 +15,22 @@ export class GameService {
   playerModel: PlayerModel;
   currentInteractionId: interactionId=null;
   private patcher;
+  private formModal:Modal;
 
   constructor(
     private socketSvc: SocketService,
     private alertCtrl: AlertController,
     private toastSvc: ToastService,
+    private modalCtrl: ModalController,
     private http: Http
   ){
     this.patcher=jdp.create();
     console.log(this.patcher);
     this.socketSvc.on('changeRoomModel',(data)=>{
       this.roomModel=this.patcher.patch(this.roomModel,data);
+      if (data['currentStage']) {//如果当前的stage发生变化
+        this.handleStage();
+      }
       console.log('Room model changed');
       console.log(this.roomModel);
     });
@@ -36,6 +43,24 @@ export class GameService {
       console.log(this.playerModel);
     });
   }
+
+  handleStage(){
+    if (this.formModal) {
+      this.formModal.dismiss();
+    }
+    let mode = this.roomModel.currentStage.mode;
+    if (mode=='fillForm' || mode=='singleForm') {
+      this.formModal=this.modalCtrl.create(GFormPage);
+      this.formModal.present();
+    }
+  }
+
+  confirmStage(){
+    this.socketSvc.inform('stageEvents',{
+      type:'stageConfirm'
+    });
+  }
+
 
   // nextInteraction(){
   //   let interactionIds = Object.keys(this.playerModel.interactions);
@@ -62,7 +87,7 @@ export class GameService {
       }else {
         return;
       }
-      let interaction:Interaction =this.playerModel.interactions[this.currentInteractionId];
+      let interaction:Interaction = this.playerModel.interactions[this.currentInteractionId];
       let alert = this.alertCtrl.create();
       alert.setTitle(interaction.title);
       alert.setSubTitle(interaction.subtitle);

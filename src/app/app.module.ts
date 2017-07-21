@@ -24,6 +24,7 @@ import {GCluePageModule} from "../pages/game/g-clue/g-clue.module";
 import {GMainPageModule} from "../pages/game/g-main/g-main.module";
 import {GSurveyPageModule} from "../pages/game/g-survey/g-survey.module";
 import {GItemListPageModule} from "../pages/game/g-item-list/g-item-list.module";
+import {GFormPageModule} from "../pages/game/g-form/g-form.module";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {GItemListPageModule} from "../pages/game/g-item-list/g-item-list.module"
     GMainPageModule,
     GSurveyPageModule,
     GItemListPageModule,
+    GFormPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
