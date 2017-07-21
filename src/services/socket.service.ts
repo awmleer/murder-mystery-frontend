@@ -18,6 +18,13 @@ export class SocketService {
     console.log('socket instance init');
   }
 
+  reConnect(){
+    if (this.socket) {
+      this.socket.disconnect();
+      this.initSocket();
+    }
+  }
+
   checkSocket(){
     if (this.socket == null) {
       this.initSocket();

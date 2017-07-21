@@ -4,6 +4,7 @@ import {Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise'
 import {CONFIG} from "../app/config";
 import {ToastService} from "./toast.service";
+import {SocketService} from "./socket.service";
 
 @Injectable()
 export class AccountService {
@@ -12,7 +13,8 @@ export class AccountService {
 
   constructor(
     private http:Http,
-    private toastService: ToastService
+    private socketSvc: SocketService,
+    private toastSvc: ToastService
   ){}
 
   initAccount(callbackWhenHasRoom:()=>any){
@@ -38,11 +40,12 @@ export class AccountService {
     }).toPromise().then(response=>{
       let data = response.json();
       if (data.status=='ok'){
-        this.toastService.toast('登录成功');
+        this.toastSvc.toast('登录成功');
         this.freshUserInfo();
+        this.socketSvc.reConnect();
         return true;
       }else{
-        this.toastService.toast(data.payload);
+        this.toastSvc.toast(data.payload);
         return false;
       }
     });
@@ -55,7 +58,7 @@ export class AccountService {
         this.user=data['payload'];
         return true;
       }else {
-        this.toastService.toast('获取用户信息失败');
+        this.toastSvc.toast('获取用户信息失败');
         return false;
       }
     });
