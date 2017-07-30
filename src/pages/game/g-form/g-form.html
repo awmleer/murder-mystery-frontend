@@ -13,7 +13,7 @@
     <ion-list-header>
       {{question.title}}
     </ion-list-header>
-    <ion-item>
+    <ion-item *ngIf="question.subtitle">
       <ion-note>{{question.subtitle}}</ion-note>
     </ion-item>
     <ion-item *ngFor="let choice of question.choices">
@@ -30,7 +30,7 @@
       <ion-note>{{gameSvc.roomModel.vote.description}}</ion-note>
     </ion-item>
     <ion-item *ngFor="let roleId of gameSvc.roomModel.vote.optionalRolesId">
-      <ion-label>{{roleId | roleToUser}}</ion-label>
+      <ion-label>{{(roleId|roleToUser).username}}</ion-label>
       <ion-radio [value]="roleId"></ion-radio>
     </ion-item>
   </ion-list>

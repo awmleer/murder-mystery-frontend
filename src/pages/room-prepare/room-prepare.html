@@ -12,7 +12,7 @@
     {{role.name}}<br>
     {{role.description}}<br>
     <!--{{role._id}}<br>-->
-    {{(role._id | roleToUser: gameSvc.roomModel.players).username}}<br>
+    {{(role._id|roleToUser).username}}<br>
     <a (click)="gameSvc.selectRole(role._id)" *ngIf="gameSvc.roomModel.roleAvailable.indexOf(role._id)!=-1">选择</a>
   </div>
 
