@@ -22,7 +22,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-list radio-group [(ngModel)]="chosenIds[i]" *ngIf="gameSvc.roomModel.vote">
+  <ion-list radio-group [(ngModel)]="voteRoleId" *ngIf="gameSvc.roomModel.vote">
     <ion-list-header>
       投票
     </ion-list-header>
