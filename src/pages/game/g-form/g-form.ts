@@ -19,7 +19,9 @@ export class GFormPage {
   ) {}
 
   submitForm(){
-    this.gameSvc.submitStageForm(this.chosenIds,this.voteRoleId);
+    this.gameSvc.submitStageForm(this.chosenIds,this.voteRoleId).then(()=>{
+      this.navCtrl.pop();
+    });
   }
 
 

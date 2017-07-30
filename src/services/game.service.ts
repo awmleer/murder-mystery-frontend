@@ -60,14 +60,14 @@ export class GameService {
     });
   }
 
-  submitStageForm(choices:any[],chosenRoleId){
+  submitStageForm(choices:any[],chosenRoleId):Promise<void>{
     let type:string;
     if (this.roomModel.currentStage.mode=='singleForm') {
       type='submitSingleForm';
     }else if(this.roomModel.currentStage.mode=='fillForm'){
       type='submitForm';
     }
-    this.socketSvc.inform('stageEvents',{
+    return this.socketSvc.inform('stageEvents',{
       type:type,
       choices:choices,
       chosenRoleId:chosenRoleId
