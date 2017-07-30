@@ -5,6 +5,8 @@ import {GameNotificationComponent} from "../../../components/game-notification/g
 import {PipesModule} from "../../../pipes/pipes.module";
 import {ShowConfirmStagePipe} from "./showConfirmStage.pipe";
 import {ShowSubmitStageFormPipe} from "./showSubmitStageForm.pipe";
+import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -12,6 +14,9 @@ import {ShowSubmitStageFormPipe} from "./showSubmitStageForm.pipe";
     GameNotificationComponent,
     ShowConfirmStagePipe,
     ShowSubmitStageFormPipe
+  ],
+  providers:[
+    DatePipe
   ],
   imports: [
     PipesModule,

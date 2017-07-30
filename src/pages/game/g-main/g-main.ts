@@ -5,6 +5,7 @@ import {GameService} from "../../../services/game.service";
 import {GSurveyPage} from "../g-survey/g-survey";
 import {GItemListPage} from "../g-item-list/g-item-list";
 import {GFormPage} from "../g-form/g-form";
+import Timer = NodeJS.Timer;
 
 
 @IonicPage()
@@ -13,6 +14,8 @@ import {GFormPage} from "../g-form/g-form";
   templateUrl: 'g-main.html',
 })
 export class GMainPage {
+  countDownIntervalId:Timer=null;
+  countDown:number=null;
 
   constructor(
     private navCtrl: NavController,
@@ -29,6 +32,30 @@ export class GMainPage {
   ionViewDidLoad(){
     this.gameSvc.handleInteraction();
     this.gameSvc.handleStage();
+  }
+
+  ionViewWillEnter(){
+    this.updateCountDown();
+    this.countDownIntervalId=setInterval(()=>{
+      this.updateCountDown();
+    },1000);
+  }
+
+  ionViewWillLeave(){
+    if (this.countDownIntervalId) {
+      clearInterval(this.countDownIntervalId);
+    }
+  }
+
+  updateCountDown(){
+    if(this.gameSvc.roomModel.currentStage.duration){
+      this.countDown=Math.round(
+        this.gameSvc.roomModel.currentStage.duration-(Date.now()-this.gameSvc.roomModel.stageBeginAt)/1000
+      );
+      if (this.countDown < 0) {
+        this.countDown=0;
+      }
+    }
   }
 
   goCluePage(){
