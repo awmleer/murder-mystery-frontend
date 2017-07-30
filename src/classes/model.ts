@@ -51,7 +51,6 @@ export interface Stage {
     optionalRolesId: roleId[];
     description: string;
   };
-  singleFormOptionalRolesId: roleId[];
   focusRoleId: roleId;
   canSurvey: boolean;
   canSkill: boolean;
