@@ -43,4 +43,8 @@ export class GMainPage {
     this.navCtrl.push(GSurveyPage);
   }
 
+  goFormPage(){
+    this.navCtrl.push(GFormPage);
+  }
+
 }

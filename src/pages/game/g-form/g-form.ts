@@ -18,5 +18,12 @@ export class GFormPage {
     public gameSvc: GameService
   ) {}
 
+  submitForm(){
+    this.gameSvc.submitStageForm({
+      choices: this.chosenIds,
+      voteRoleId: this.voteRoleId
+    });
+  }
+
 
 }

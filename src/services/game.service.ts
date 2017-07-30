@@ -60,6 +60,11 @@ export class GameService {
     });
   }
 
+  submitStageForm(data:{choices:any[];voteRoleId:roleId;}|{chosenRoleId:roleId;}){
+    data['type']='submitForm';
+    this.socketSvc.inform('stageEvents',data);
+  }
+
 
   // nextInteraction(){
   //   let interactionIds = Object.keys(this.playerModel.interactions);

@@ -4,12 +4,14 @@ import { GMainPage } from './g-main';
 import {GameNotificationComponent} from "../../../components/game-notification/game-notification";
 import {PipesModule} from "../../../pipes/pipes.module";
 import {ShowConfirmStagePipe} from "./showConfirmStage.pipe";
+import {ShowSubmitStageFormPipe} from "./showSubmitStageForm.pipe";
 
 @NgModule({
   declarations: [
     GMainPage,
     GameNotificationComponent,
-    ShowConfirmStagePipe
+    ShowConfirmStagePipe,
+    ShowSubmitStageFormPipe
   ],
   imports: [
     PipesModule,
