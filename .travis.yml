@@ -8,6 +8,7 @@ script:
   - npm run build
 cache:
   directories:
+    - $(npm config get prefix)/bin/ionic
     - node_modules
 addons:
   ssh_known_hosts: 123.206.177.174
