@@ -26,6 +26,7 @@ import {GSurveyPageModule} from "../pages/game/g-survey/g-survey.module";
 import {GItemListPageModule} from "../pages/game/g-item-list/g-item-list.module";
 import {GFormPageModule} from "../pages/game/g-form/g-form.module";
 import {ClockService} from "../services/clock.service";
+import {GSkillPageModule} from "../pages/game/g-skill/g-skill.module";
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {ClockService} from "../services/clock.service";
     GSurveyPageModule,
     GItemListPageModule,
     GFormPageModule,
+    GSkillPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
