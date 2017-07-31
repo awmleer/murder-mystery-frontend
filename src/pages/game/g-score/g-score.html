@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>得分公示</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngFor="let result of gameSvc.roomModel.results">
+    玩家：{{(result.roleId|roleToUser).username}} (id {{result.roleId}})<br>
+    得分：{{result.scores}}
+  </div>
+</ion-content>

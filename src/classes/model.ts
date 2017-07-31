@@ -33,6 +33,10 @@ export interface RoomModel {
   stages: StageBrief[];
   currentStage: Stage;
   focusRoleId: roleId; //某些stage的关键角色ID
+  results:{ //得分公示
+    roleId: roleId;
+    scores: number;
+  }[];
 }
 
 
