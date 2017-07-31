@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
 import {AccountService} from "../../services/account.service";
 
 @Component({
@@ -9,7 +8,6 @@ import {AccountService} from "../../services/account.service";
 export class MinePage {
 
   constructor(
-    private navCtrl: NavController,
     public accountService: AccountService
   ) {}
 
@@ -19,6 +17,14 @@ export class MinePage {
 
   login2(){
     this.accountService.login('1100','110');
+  }
+
+  login3(){
+    this.accountService.login('test1','110');
+  }
+
+  login4(){
+    this.accountService.login('test2','110');
   }
 
 }
