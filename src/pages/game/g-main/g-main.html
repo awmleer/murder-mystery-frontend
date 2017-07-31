@@ -21,7 +21,7 @@
   当前阶段的模式：{{gameSvc.roomModel.currentStage.mode}}<br>
   阶段开始于：{{gameSvc.roomModel.stageBeginAt | date:'medium'}}<br>
   <span *ngIf="gameSvc.roomModel.currentStage.mode=='countDown'||gameSvc.roomModel.currentStage.mode=='countDownWithConfirm'">
-    倒计时：{{countDown}}
+    倒计时：{{countDown()}}
   </span><br>
   <!--TODO change to 'mediumTime'-->
   <hr>

@@ -25,6 +25,7 @@ import {GMainPageModule} from "../pages/game/g-main/g-main.module";
 import {GSurveyPageModule} from "../pages/game/g-survey/g-survey.module";
 import {GItemListPageModule} from "../pages/game/g-item-list/g-item-list.module";
 import {GFormPageModule} from "../pages/game/g-form/g-form.module";
+import {ClockService} from "../services/clock.service";
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import {GFormPageModule} from "../pages/game/g-form/g-form.module";
     PlatformService,
     SocketService,
     GameService,
+    ClockService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
