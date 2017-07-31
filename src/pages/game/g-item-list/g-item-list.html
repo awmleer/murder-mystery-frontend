@@ -10,6 +10,6 @@
 <ion-content padding>
   <div *ngFor="let item of (gameSvc.playerModel.usables | dictToArray | where: ['category','item'])">
     {{item.id}} {{item.name}} x{{item.amount}}
-    <a (click)="activateItem(item)">使用</a>
+    <button ion-button clear (click)="activateItem(item)" [disabled]="this.gameSvc.roomModel.currentStage.canItem==false">使用</button>
   </div>
 </ion-content>

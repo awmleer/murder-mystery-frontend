@@ -10,6 +10,6 @@
     {{place.description}}<br>
     调查成功率：{{place.surveySuccPsb}}<br>
     消耗AP：{{place.costAp}}<br>
-    <a (click)="survey(place.key)">调查</a>
+    <button ion-button clear (click)="survey(place.key)" [disabled]="this.gameSvc.roomModel.currentStage.canSurvey==false">调查</button>
   </div>
 </ion-content>

@@ -6,8 +6,6 @@
 
 </ion-header>
 
-<!--TODO canSurvey, canSkill...的实现-->
-
 <ion-content padding>
   <game-notification></game-notification>
   当前房间阶段：{{gameSvc.roomModel.roomStage}}<br>
@@ -42,7 +40,7 @@
     <span *ngIf="this.gameSvc.playerModel.stageConfirm">√</span>填写表单并结束阶段
   </button>
   <button ion-button block (click)="goCluePage()">线索</button>
-  <button ion-button block (click)="goItemPage()">物品</button>
-  <button ion-button block (click)="goSurveyPage()">调查</button>
+  <button ion-button block (click)="goItemPage()" [disabled]="this.gameSvc.roomModel.currentStage.canItem==false">物品</button>
+  <button ion-button block (click)="goSurveyPage()" [disabled]="this.gameSvc.roomModel.currentStage.canSurvey==false">调查</button>
   <button ion-button block navPop>返回大厅</button>
 </ion-content>
