@@ -66,6 +66,7 @@ export class SocketService {
 
   on(eventName:string,callback:(data)=>void){
     this.checkSocket();
+    this.socket.off(eventName);
     this.socket.on(eventName, callback);
   }
 

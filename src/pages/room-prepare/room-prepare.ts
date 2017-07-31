@@ -25,15 +25,17 @@ export class RoomPreparePage {
   ionViewWillEnter(){
     this.gameSvc.initModel().then(()=>{
       if(this.gameSvc.roomModel.roomStage=='start'){
+        console.log(1);
         this.goGameMainPage();
+      }else{
+        this.gameSvc.onGameStarted().then(()=>{
+          this.goGameMainPage();
+        });
+        this.platformSvc.getGameInfo(this.gameSvc.roomModel.gameTemplateId).then(gameInfo=>{
+          console.log(gameInfo);
+          this.gameInfo=gameInfo;
+        });
       }
-      this.gameSvc.onGameStarted().then(()=>{
-        this.goGameMainPage();
-      });
-      this.platformSvc.getGameInfo(this.gameSvc.roomModel.gameTemplateId).then(gameInfo=>{
-        console.log(gameInfo);
-        this.gameInfo=gameInfo;
-      });
     });
 
   }
