@@ -38,6 +38,29 @@ export class GMainPage {
     );
   }
 
+  shouldShowConfirmStage(){
+    switch (this.gameSvc.roomModel.currentStage.mode){
+      case 'allConfirmed':
+      case 'countDownWithConfirm':
+        return true;
+      case 'singleConfirm':
+        return (this.gameSvc.playerModel.roleId == this.gameSvc.roomModel.focusRoleId);
+      default:
+        return false;
+    }
+  }
+
+  shouldShowSubmitStageForm(){
+    switch (this.gameSvc.roomModel.currentStage.mode){
+      case 'fillForm':
+        return true;
+      case 'singleForm':
+        return (this.gameSvc.playerModel.roleId == this.gameSvc.roomModel.focusRoleId);
+      default:
+        return false;
+    }
+  }
+
   goCluePage(){
     this.navCtrl.push(GCluePage);
   }

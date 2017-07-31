@@ -35,10 +35,10 @@
   <div *ngFor="let prop of (gameSvc.playerModel.props|dictToArray)">
     {{prop.name}}({{prop.id}})：{{prop.value}}
   </div>
-  <button *ngIf="this.gameSvc.roomModel.currentStage.mode | showConfirmStage" [disabled]="this.gameSvc.playerModel.stageConfirm" ion-button block (click)="this.gameSvc.confirmStage()">
+  <button *ngIf="shouldShowConfirmStage()" [disabled]="this.gameSvc.playerModel.stageConfirm" ion-button block (click)="this.gameSvc.confirmStage()">
     <span *ngIf="this.gameSvc.playerModel.stageConfirm">√</span>结束本阶段
   </button>
-  <button *ngIf="this.gameSvc.roomModel.currentStage.mode | showSubmitStageForm" [disabled]="this.gameSvc.playerModel.stageConfirm" ion-button block (click)="goFormPage()">
+  <button *ngIf="shouldShowSubmitStageForm()" [disabled]="this.gameSvc.playerModel.stageConfirm" ion-button block (click)="goFormPage()">
     <span *ngIf="this.gameSvc.playerModel.stageConfirm">√</span>填写表单并结束阶段
   </button>
   <button ion-button block (click)="goCluePage()">线索</button>
