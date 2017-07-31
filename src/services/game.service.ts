@@ -24,6 +24,14 @@ export class GameService {
   ){
     this.patcher=jdp.create();
     console.log(this.patcher);
+  }
+
+  closeSocket(){
+      this.socketSvc.disconnect();
+  }
+
+  initSocket(){
+    this.socketSvc.connect();
     this.socketSvc.on('changeRoomModel',(data)=>{
       this.roomModel=this.patcher.patch(this.roomModel,data);
       if (data['currentStage']) {//如果当前的stage发生变化
@@ -93,38 +101,38 @@ export class GameService {
   // }
 
   handleInteraction(){
-      let interactionIds = Object.keys(this.playerModel.interactions);
+    let interactionIds = Object.keys(this.playerModel.interactions);
     console.log(interactionIds);
-      if (this.currentInteractionId == null && interactionIds.length>0) {
-        this.currentInteractionId = interactionIds[0];
-      }else {
-        return;
-      }
-      let interaction:Interaction = this.playerModel.interactions[this.currentInteractionId];
-      let alert = this.alertCtrl.create();
-      alert.setTitle(interaction.title);
-      alert.setSubTitle(interaction.subtitle);
-      for (let i in interaction.options) {
-        let option = interaction.options[i];
-        alert.addInput({
-          type:'radio',
-          label: option.text,
-          value: option.id.toString(),
-          checked: false
-        });
-      }
-      // alert.addButton('取消');//TODO 是否需要cancelable？
-      alert.addButton({
-        text: '确定',
-        handler: data=>{
-          this.socketSvc.inform('itrctRes',{
-            'interactionId': this.currentInteractionId,
-            'optionId': parseInt(data)
-          });
-          this.currentInteractionId=null;
-        }
+    if (this.currentInteractionId == null && interactionIds.length>0) {
+      this.currentInteractionId = interactionIds[0];
+    }else {
+      return;
+    }
+    let interaction:Interaction = this.playerModel.interactions[this.currentInteractionId];
+    let alert = this.alertCtrl.create();
+    alert.setTitle(interaction.title);
+    alert.setSubTitle(interaction.subtitle);
+    for (let i in interaction.options) {
+      let option = interaction.options[i];
+      alert.addInput({
+        type:'radio',
+        label: option.text,
+        value: option.id.toString(),
+        checked: false
       });
-      alert.present();
+    }
+    // alert.addButton('取消');//TODO 是否需要cancelable？
+    alert.addButton({
+      text: '确定',
+      handler: data=>{
+        this.socketSvc.inform('itrctRes',{
+          'interactionId': this.currentInteractionId,
+          'optionId': parseInt(data)
+        });
+        this.currentInteractionId=null;
+      }
+    });
+    alert.present();
   }
 
 

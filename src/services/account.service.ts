@@ -42,7 +42,7 @@ export class AccountService {
       if (data.status=='ok'){
         this.toastSvc.toast('登录成功');
         this.freshUserInfo();
-        this.socketSvc.reConnect();
+        this.socketSvc.reconnect();
         return true;
       }else{
         this.toastSvc.toast(data.payload);

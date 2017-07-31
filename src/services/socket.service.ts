@@ -13,31 +13,24 @@ export class SocketService {
     private toastSvc: ToastService
   ) {}
 
-  initSocket(){
+  connect(){
     this.socket=io.connect(CONFIG.socketUrl);
     console.log('socket instance init');
   }
 
-  reConnect(){
+  reconnect(){
     if (this.socket) {
-      this.socket.disconnect();
-      this.initSocket();
+      this.disconnect();
     }
+    this.connect();
   }
 
-  checkSocket(){
-    if (this.socket == null) {
-      this.initSocket();
-    }
-  }
-
-  getSocket(){
-    this.checkSocket();
-    return this.socket;
+  disconnect(){
+    this.socket.disconnect();
+    console.log('socket closed');
   }
 
   call(eventName:string, param?:object):Promise<any>{//call用来做双向的数据交互
-    this.checkSocket();
     if (!param) param={};
     return new Promise((resolve, reject)=>{
       this.socket.emit(eventName,param,(data)=>{
@@ -48,7 +41,6 @@ export class SocketService {
   }
 
   inform(eventName:string, param?:object):Promise<null>{//inform用来做单向的数据交互
-    this.checkSocket();
     if (!param) param={};
     return new Promise((resolve, reject) => {
       this.socket.emit(eventName,param,(data)=>{
@@ -65,7 +57,6 @@ export class SocketService {
   }
 
   on(eventName:string,callback:(data)=>void){
-    this.checkSocket();
     this.socket.off(eventName);
     this.socket.on(eventName, callback);
   }

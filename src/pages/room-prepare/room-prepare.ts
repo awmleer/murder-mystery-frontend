@@ -13,6 +13,7 @@ import {GMainPage} from "../game/g-main/g-main";
 })
 export class RoomPreparePage {
   gameInfo:GameInfo;
+  shouldCloseSocketWhenLeave:boolean=true;
 
   constructor(
     public navCtrl: NavController,
@@ -23,6 +24,7 @@ export class RoomPreparePage {
   ) {}
 
   ionViewWillEnter(){
+    this.gameSvc.initSocket();
     this.gameSvc.initModel().then(()=>{
       if(this.gameSvc.roomModel.roomStage=='start'){
         console.log(1);
@@ -37,7 +39,12 @@ export class RoomPreparePage {
         });
       }
     });
+  }
 
+  ionViewWillUnload(){
+    if (this.shouldCloseSocketWhenLeave) {
+      this.gameSvc.closeSocket();
+    }
   }
 
   startGame(){
@@ -47,6 +54,8 @@ export class RoomPreparePage {
 
 
   goGameMainPage(){
+    this.gameSvc.closeSocket();
+    this.shouldCloseSocketWhenLeave=false;
     this.modalCtrl.create(GMainPage).present().then(()=>{
       this.navCtrl.popToRoot();
     });

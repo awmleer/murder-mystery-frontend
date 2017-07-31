@@ -25,12 +25,16 @@ export class GMainPage {
     this.gameSvc.formModal=this.modalCtrl.create(GFormPage);
   }
 
-  ionViewWillLoad(){
-    // this.gameSvc.freshTemplate();
-  }
   ionViewDidLoad(){
-    this.gameSvc.handleInteraction();
-    this.gameSvc.handleStage();
+    this.gameSvc.initSocket();
+    this.gameSvc.initModel().then(()=>{
+      this.gameSvc.handleInteraction();
+      this.gameSvc.handleStage();
+    });
+  }
+
+  ionViewWillUnload(){
+    this.gameSvc.closeSocket();
   }
 
   get countDown(){
