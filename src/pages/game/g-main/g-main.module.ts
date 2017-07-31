@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { GMainPage } from './g-main';
-import {GameNotificationComponent} from "../../../components/game-notification/game-notification";
+import {GameNotificationComponent} from "./game-notification/game-notification";
 import {PipesModule} from "../../../pipes/pipes.module";
 import {ShowConfirmStagePipe} from "./showConfirmStage.pipe";
 import {ShowSubmitStageFormPipe} from "./showSubmitStageForm.pipe";

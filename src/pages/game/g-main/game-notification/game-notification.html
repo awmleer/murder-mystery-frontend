@@ -1,0 +1,17 @@
+<div>
+  <div *ngIf="!expanding" class="folding" (click)="toggleExpand()">
+    <span *ngIf="gameSvc.playerModel?.notifications.length>0">
+      {{gameSvc.playerModel.notifications[gameSvc.playerModel.notifications.length-1].content}}
+      <!--显示最近的一条消息-->
+    </span>
+    <span *ngIf="gameSvc.playerModel?.notifications.length==0">
+      暂无通知消息
+    </span>
+  </div>
+  <div [hidden]="!expanding" class="expanding" (click)="toggleExpand()">
+    <div *ngFor="let notification of gameSvc.playerModel?.notifications">
+      {{notification.time|date:'medium'}}<br>
+      {{notification.content}}
+    </div>
+  </div>
+</div>

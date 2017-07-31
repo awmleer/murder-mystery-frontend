@@ -12,7 +12,6 @@
   <game-notification></game-notification>
   当前房间阶段：{{gameSvc.roomModel.roomStage}}<br>
   当前游戏阶段：{{gameSvc.roomModel.gameStage}}<br>
-  <!--TODO count down-->
   <p>
     <span *ngFor="let stage of gameSvc.roomModel.stages">
       {{stage.name}}
@@ -30,7 +29,7 @@
   用户ID：{{gameSvc.playerModel.id}}<br>
   用户名：{{gameSvc.playerModel.username}}<br>
   名字：{{gameSvc.playerModel.name}}<br>
-  上次调查事件：<span *ngIf="gameSvc.playerModel.lastSurveyedAt">{{gameSvc.playerModel.lastSurveyedAt | date:'medium'}}</span><span *ngIf="gameSvc.playerModel.lastSurveyedAt==0">暂无调查记录</span><br>
+  上次调查时间：<span *ngIf="gameSvc.playerModel.lastSurveyedAt">{{gameSvc.playerModel.lastSurveyedAt | date:'medium'}}</span><span *ngIf="gameSvc.playerModel.lastSurveyedAt==0">暂无调查记录</span><br>
   笔记：{{gameSvc.playerModel.note}}<br>
   <hr>
   属性列表<br>

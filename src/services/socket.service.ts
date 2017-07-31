@@ -41,7 +41,6 @@ export class SocketService {
     if (!param) param={};
     return new Promise((resolve, reject)=>{
       this.socket.emit(eventName,param,(data)=>{
-        console.log('resolve!');
         resolve(data);
       });
       console.log(eventName + ' called');
