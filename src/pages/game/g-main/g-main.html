@@ -11,7 +11,6 @@
 <ion-content padding>
   <game-notification></game-notification>
   当前房间阶段：{{gameSvc.roomModel.roomStage}}<br>
-  当前游戏阶段：{{gameSvc.roomModel.gameStage}}<br>
   <p>
     <span *ngFor="let stage of gameSvc.roomModel.stages">
       {{stage.name}}

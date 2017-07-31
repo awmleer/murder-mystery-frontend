@@ -1,14 +1,15 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>调查</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-  <div *ngFor="let place of (gameSvc.roomModel.places|dictToArray)">
-    {{place.name}} <a (click)="survey(place.key)">调查</a>{{place.key}}
+  <div *ngFor="let place of (gameSvc.roomModel.places|dictToArray)" class="place">
+    <b>{{place.name}}</b> (placeId: {{place.key}})<br>
+    {{place.description}}<br>
+    调查成功率：{{place.surveySuccPsb}}<br>
+    消耗AP：{{place.costAp}}<br>
+    <a (click)="survey(place.key)">调查</a>
   </div>
 </ion-content>
