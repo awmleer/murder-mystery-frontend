@@ -6,9 +6,9 @@ install:
   - npm install
 script:
   - npm run build
-cache:
-  directories:
-    - node_modules
+#cache:
+#  directories:
+#    - node_modules
 addons:
   ssh_known_hosts: 123.206.177.174
 deploy:
