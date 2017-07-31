@@ -6,10 +6,10 @@ import {Usable} from "../../../classes/model";
 
 @IonicPage()
 @Component({
-  selector: 'page-g-item-list',
-  templateUrl: 'g-item-list.html',
+  selector: 'page-g-item',
+  templateUrl: 'g-item.html',
 })
-export class GItemListPage {
+export class GItemPage {
 
   constructor(
     private navCtrl: NavController,
@@ -25,5 +25,6 @@ export class GItemListPage {
       this.gameSvc.activateUsable(item.id);
     }
   }
+  
 
 }

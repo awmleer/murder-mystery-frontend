@@ -3,7 +3,7 @@ import {IonicPage, ModalController, NavController} from 'ionic-angular';
 import {GCluePage} from "../g-clue/g-clue";
 import {GameService} from "../../../services/game.service";
 import {GSurveyPage} from "../g-survey/g-survey";
-import {GItemListPage} from "../g-item-list/g-item-list";
+import {GItemPage} from "../g-item/g-item";
 import {GFormPage} from "../g-form/g-form";
 import {ClockService} from "../../../services/clock.service";
 
@@ -66,7 +66,7 @@ export class GMainPage {
   }
 
   goItemPage(){
-    this.navCtrl.push(GItemListPage);
+    this.navCtrl.push(GItemPage);
   }
 
   goSurveyPage(){
