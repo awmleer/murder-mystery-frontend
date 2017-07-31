@@ -1,13 +1,12 @@
 <ion-header>
-
   <ion-navbar [hideBackButton]="true">
     <ion-title>游戏名称</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<game-notification></game-notification>
+
 <ion-content padding *ngIf="gameSvc.roomModel&&gameSvc.playerModel">
-  <game-notification></game-notification>
   当前房间阶段：{{gameSvc.roomModel.roomStage}}<br>
   <p>
     <span *ngFor="let stage of gameSvc.roomModel.stages">
