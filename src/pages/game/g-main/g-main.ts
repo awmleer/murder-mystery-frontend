@@ -32,13 +32,13 @@ export class GMainPage {
     this.gameSvc.handleStage();
   }
 
-  countDown(){
+  get countDown(){
     return Math.round(
       this.gameSvc.roomModel.currentStage.duration-(this.clockSvc.t-this.gameSvc.roomModel.stageBeginAt)/1000
     );
   }
 
-  shouldShowConfirmStage(){
+  get shouldShowConfirmStage(){
     switch (this.gameSvc.roomModel.currentStage.mode){
       case 'allConfirmed':
       case 'countDownWithConfirm':
@@ -50,7 +50,7 @@ export class GMainPage {
     }
   }
 
-  shouldShowSubmitStageForm(){
+  get shouldShowSubmitStageForm(){
     switch (this.gameSvc.roomModel.currentStage.mode){
       case 'fillForm':
         return true;
