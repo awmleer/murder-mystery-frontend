@@ -1,12 +1,15 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>gSkill</ion-title>
+    <ion-title>技能</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <div *ngFor="let skill of (gameSvc.playerModel.usables | dictToArray | where: ['category','skill'])">
+    {{skill.name}} (id:{{skill.id}})
+    <button ion-button clear (click)="activateSkill(item)" [disabled]="this.gameSvc.roomModel.currentStage.canSkill==false">使用</button>
+  </div>
 </ion-content>

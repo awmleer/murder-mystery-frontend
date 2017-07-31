@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController} from 'ionic-angular';
+import {IonicPage} from 'ionic-angular';
 import {GameService} from "../../../services/game.service";
 import {Usable} from "../../../classes/model";
 
@@ -12,7 +12,6 @@ import {Usable} from "../../../classes/model";
 export class GItemPage {
 
   constructor(
-    private navCtrl: NavController,
     private gameSvc: GameService
   ) {}
 
@@ -25,6 +24,6 @@ export class GItemPage {
       this.gameSvc.activateUsable(item.id);
     }
   }
-  
+
 
 }

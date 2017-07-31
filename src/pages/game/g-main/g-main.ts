@@ -6,6 +6,7 @@ import {GSurveyPage} from "../g-survey/g-survey";
 import {GItemPage} from "../g-item/g-item";
 import {GFormPage} from "../g-form/g-form";
 import {ClockService} from "../../../services/clock.service";
+import {GSkillPage} from "../g-skill/g-skill";
 
 
 @IonicPage()
@@ -67,6 +68,10 @@ export class GMainPage {
 
   goItemPage(){
     this.navCtrl.push(GItemPage);
+  }
+
+  goSkillPage(){
+    this.navCtrl.push(GSkillPage);
   }
 
   goSurveyPage(){

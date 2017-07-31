@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
+import {GameService} from "../../../services/game.service";
+import {Usable} from "../../../classes/model";
 
 
 @IonicPage()
@@ -9,11 +11,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class GSkillPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public gameSvc: GameService
+  ) {}
+
+
+  activateSkill(skill:Usable){
+    if(skill.target=='chosenRole'){
+      this.gameSvc.letUserSelectRole().then(roleId=>{
+        this.gameSvc.activateUsable(skill.id,roleId);
+      });
+    }else{
+      this.gameSvc.activateUsable(skill.id);
+    }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GSkillPage');
-  }
 
 }
