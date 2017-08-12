@@ -256,7 +256,7 @@ export class GameService {
 
   startTrade(roleId, transaction):Promise<null>{
     return this.socketSvc.inform('tradeEvents',{
-      type:'start',
+      type:'startAndChoose',
       targetRoleId: roleId,
       transaction: transaction
     });
@@ -266,7 +266,7 @@ export class GameService {
     let param;
     if (accept){
       param={
-        type:'trading',
+        type:'choose',
         transaction: transaction
       }
     }else{
@@ -277,8 +277,11 @@ export class GameService {
     return this.socketSvc.inform('tradeEvents',param);
   }
 
-  confirmTrade(){
-
+  confirmTrade(accept:boolean):Promise<null>{
+    return this.socketSvc.inform('tradeEvents',{
+      type:'confirm',
+      res:accept?'accept':'reject'
+    });
   }
 
 

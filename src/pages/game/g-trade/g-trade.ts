@@ -75,7 +75,7 @@ export class GTradePage {
     this.gameSvc.letUserSelectRole().then((roleId)=>{
       this.gameSvc.startTrade(roleId,this.getTransactions()).then(()=>{
         this.toastSvc.toast('交易创建成功');
-        this.navCtrl.pop();
+        // this.navCtrl.pop();
       });
     });
   }
@@ -84,12 +84,14 @@ export class GTradePage {
   replyTrade(accept:boolean){
     this.gameSvc.replyTrade(accept,accept?this.getTransactions():null).then(()=>{
       this.toastSvc.toast('已回复对方的交易请求');
-      this.navCtrl.pop();
+      // this.navCtrl.pop();
     });
   }
 
   confirmTrade(accept:boolean){
-
+    this.gameSvc.confirmTrade(accept).then(()=>{
+      this.toastSvc.toast(accept?'交易成功':'已拒绝交易');
+    });
   }
 
 

@@ -13,6 +13,9 @@
     发起新的交易！
   </div>
 
+  <div *ngIf="trading">
+    正在和{{gameSvc.playerModel.transaction.withRoleId}}进行交易
+  </div>
 
   <div *ngIf="trading && ( (!isStarter&&replied) || isStarter )">
     您选择的物品：
