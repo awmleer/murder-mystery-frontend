@@ -33,6 +33,7 @@ export class GameService {
   initSocket(){
     this.socketSvc.connect();
     this.socketSvc.on('changeRoomModel',(data)=>{
+      console.log('got changeRoomModel event',data);
       this.roomModel=this.patcher.patch(this.roomModel,data);
       if (data['currentStage']) {//如果当前的stage发生变化
         this.handleStage();
@@ -41,6 +42,7 @@ export class GameService {
       console.log(this.roomModel);
     });
     this.socketSvc.on('changePlayerModel',(data)=>{
+      console.log('got changePlayerModel event',data);
       this.playerModel=this.patcher.patch(this.playerModel,data);
       if (data['interactions']) {//不论是增加interaction还是删除都会触发handle方法
         this.handleInteraction();
@@ -139,7 +141,7 @@ export class GameService {
   initModel():Promise<null>{
     return new Promise((resolve) => {
       this.socketSvc.call('initModel').then((data)=>{
-        console.log('initModel got callback');
+        console.log('initModel got callback',data);
         console.log(data);
         this.playerModel=data.initPlayer;
         this.roomModel=data.initRoom;

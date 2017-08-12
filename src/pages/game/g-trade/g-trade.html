@@ -1,12 +1,67 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>gTrade</ion-title>
+    <ion-title>交易</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <div *ngIf="!trading">
+    发起新的交易！
+
+  </div>
+
+  <div *ngIf="trading">
+
+  </div>
+
+  <div>
+    <div *ngFor="let usable of gameSvc.playerModel.usables | dictToArray | where : ['tradable',true]" style="border: solid 1px #bfbfbf;">
+      id: {{usable.id}}<br>
+      类型: {{usable.category}}<br>
+      {{usable.name}}<br>
+      {{thingsChosenAmount.usable[usable.id]?thingsChosenAmount.usable[usable.id]:0}}
+      <button ion-button clear
+              (click)="decreaseThing('usable',usable.id)"
+              [disabled]="!thingsChosenAmount.usable[usable.id]"
+      >-</button>
+      <button ion-button clear
+              (click)="increaseThing('usable',usable.id)"
+              [disabled]="thingsChosenAmount.usable[usable.id]&&thingsChosenAmount.usable[usable.id]>=usable.amount"
+      >+</button>
+    </div>
+    <div *ngFor="let prop of gameSvc.playerModel.props | dictToArray | where : ['tradable',true]" style="border: solid 1px #bfbfbf;">
+      id: {{prop.id}}<br>
+      {{prop.name}}<br>
+      {{thingsChosenAmount.prop[prop.id]?thingsChosenAmount.prop[prop.id]:0}}
+      <button ion-button clear
+              (click)="decreaseThing('prop',prop.id)"
+              [disabled]="!thingsChosenAmount.prop[prop.id]"
+      >-</button>
+      <button ion-button clear
+              (click)="increaseThing('prop',prop.id)"
+              [disabled]="thingsChosenAmount.prop[prop.id]&&thingsChosenAmount.prop[prop.id]>=prop.value"
+      >+</button>
+      <!--TODO 改成input组件-->
+    </div>
+    <div *ngFor="let clue of gameSvc.playerModel.clues | dictToArray | where : ['tradable',true]" style="border: solid 1px #bfbfbf;">
+      id: {{clue.id}}<br>
+      {{clue.name}}<br>
+      {{thingsChosenAmount.clue[clue.id]?'√':0}}
+      <button ion-button clear
+              (click)="decreaseThing('clue',clue.id)"
+              [disabled]="!thingsChosenAmount.clue[clue.id]"
+      >-</button>
+      <button ion-button clear
+              (click)="increaseThing('clue',clue.id)"
+              [disabled]="thingsChosenAmount.clue[clue.id]&&thingsChosenAmount.clue[clue.id]>=1"
+      >+</button>
+      <!--TODO 改成CheckBox组件-->
+    </div>
+  </div>
+
 
 </ion-content>

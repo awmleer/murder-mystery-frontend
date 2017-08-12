@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { GTradePage } from './g-trade';
+import {PipesModule} from "../../../pipes/pipes.module";
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { GTradePage } from './g-trade';
   ],
   imports: [
     IonicPageModule.forChild(GTradePage),
+    PipesModule
   ],
   exports: [
     GTradePage

@@ -116,18 +116,18 @@ export interface PlayerModel {
     [interactionId:string]: Interaction;
   };
   transaction:{
-    withRoleId: number, //交易对象,-1表示没有交易
+    withRoleId: number; //交易对象,-1表示没有交易
     myTrans: {
       Type: 'clue' | 'usable', //clue,usable
       transactionId: number, //交易品id
-      amount: number
-    }[],
+      amount?: number
+    }[];
     oppositeTrans: {
       Type: 'clue' | 'usable',
       transactionId: number,
-      amount: number
-    }[],
-    isStarter: boolean //是否为交易发起者
+      amount?: number
+    }[];
+    isStarter: boolean; //是否为交易发起者
   };
 }
 
@@ -143,7 +143,8 @@ export interface Prop {
   id: propId;
   name: string;
   value: number;
-  specialType: "none" //暂定
+  specialType: "none"; //暂定
+  tradable: boolean;
 }
 
 export type clueId =number;
@@ -153,14 +154,15 @@ export interface Clue {
   Type: "pic" | "text";
   content: string;//uri or text
   description: string;
-  usablesId: usableId[]//可对该线索使用的道具
+  usablesId: usableId[];//可对该线索使用的道具
+  tradable: boolean;
 }
 
 export interface Notification {
   time: timestamp;
   from: roleId;
   Type: "text" | "pic"; // 暂时只有text
-  content: string
+  content: string;
 }
 
 export type usableId = number;
@@ -174,6 +176,7 @@ export interface Usable extends Element{
   lastUsedAt: timestamp;
   amount: number;
   consumable: boolean;
+  tradable: boolean;
 }
 
 export interface Question {

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
+import {GameService} from "../../../services/game.service";
+
+type thingType='prop' | 'clue' | 'usable';
 
 
 @IonicPage()
@@ -9,11 +12,39 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class GTradePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public gameSvc: GameService
+  ) {}
+
+  get trading():boolean{
+    return this.gameSvc.playerModel.transaction.withRoleId!=-1;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GTradePage');
+  thingsChosenAmount:{
+    usable:{ [id:number]:number };
+    clue:{ [id:number]:number };
+    prop:{ [id:number]:number };
+  }={
+    usable:{},
+    clue:{},
+    prop:{}
+  };
+
+
+  increaseThing(type:thingType,id){
+    if(!this.thingsChosenAmount[type][id])this.thingsChosenAmount[type][id]=0;
+    this.thingsChosenAmount[type][id]++;
+    console.log(this.thingsChosenAmount);
   }
+
+  decreaseThing(type:thingType,id){
+    this.thingsChosenAmount[type][id]--;
+    console.log(this.thingsChosenAmount);
+  }
+
+
+
+
 
 }
