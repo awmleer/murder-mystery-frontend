@@ -254,5 +254,32 @@ export class GameService {
     });
   }
 
+  startTrade(roleId, transaction):Promise<null>{
+    return this.socketSvc.inform('tradeEvents',{
+      type:'start',
+      targetRoleId: roleId,
+      transaction: transaction
+    });
+  }
+
+  replyTrade(accept:boolean, transaction){
+    let param;
+    if (accept){
+      param={
+        type:'trading',
+        transaction: transaction
+      }
+    }else{
+      param={
+        type:'reject'
+      }
+    }
+    return this.socketSvc.inform('tradeEvents',param);
+  }
+
+  confirmTrade(){
+
+  }
+
 
 }

@@ -128,6 +128,7 @@ export interface PlayerModel {
       amount?: number
     }[];
     isStarter: boolean; //是否为交易发起者
+    replied: boolean;
   };
 }
 

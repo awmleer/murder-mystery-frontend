@@ -11,14 +11,33 @@
 
   <div *ngIf="!trading">
     发起新的交易！
-
   </div>
 
-  <div *ngIf="trading">
 
+  <div *ngIf="trading && ( (!isStarter&&replied) || isStarter )">
+    您选择的物品：
+    <div *ngIf="gameSvc.playerModel.transaction.myTrans?.length==0">
+      无
+    </div>
+    <div *ngFor="let thing of gameSvc.playerModel.transaction.myTrans">
+      {{thing.transactionId}}({{thing.Type}}) x{{thing.amount}}
+      <!--TODO get the name-->
+    </div>
   </div>
 
-  <div>
+  <div *ngIf="trading && ( (isStarter&&replied) || !isStarter )">
+    对方选择的物品：
+    <div *ngFor="let thing of gameSvc.playerModel.transaction.oppositeTrans">
+      {{thing.transactionId}}({{thing.Type}}) x{{thing.amount}}
+      <!--TODO get the name-->
+    </div>
+    <div *ngIf="gameSvc.playerModel.transaction.oppositeTrans?.length==0">
+      无
+    </div>
+  </div>
+
+
+  <div *ngIf="!trading || (trading && !isStarter && !replied)">
     <div *ngFor="let usable of gameSvc.playerModel.usables | dictToArray | where : ['tradable',true]" style="border: solid 1px #bfbfbf;">
       id: {{usable.id}}<br>
       类型: {{usable.category}}<br>
@@ -61,6 +80,30 @@
       >+</button>
       <!--TODO 改成CheckBox组件-->
     </div>
+  </div>
+
+  <div *ngIf="!trading">
+    <button ion-button block (click)="startTrade()">发起交易</button>
+  </div>
+
+  <div *ngIf="trading && !isStarter && !replied">
+    <button ion-button block (click)="replyTrade(true)">使用这些物品和对方交易</button>
+    <button ion-button block (click)="replyTrade(false)">拒绝对方的交易请求</button>
+  </div>
+
+
+  <div *ngIf="trading && !isStarter && replied">
+    您已做出回复，正等待交易发起方确认
+  </div>
+
+
+  <div *ngIf="trading && isStarter && !replied">
+    等待对方做出回复
+  </div>
+
+  <div *ngIf="trading && isStarter && replied">
+    <button ion-button block (click)="confirmTrade(true)">同意交易</button>
+    <button ion-button block (click)="confirmTrade(false)">拒绝交易</button>
   </div>
 
 
