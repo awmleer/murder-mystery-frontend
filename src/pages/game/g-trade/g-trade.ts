@@ -61,7 +61,7 @@ export class GTradePage {
         if (this.thingsChosenAmount[type].hasOwnProperty(id) && this.thingsChosenAmount[type][id]){
           transactions.push({
             type:type,
-            transactionId:id,
+            transactionId:parseInt(id),
             amount:this.thingsChosenAmount[type][id]
           });
         }
