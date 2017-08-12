@@ -90,8 +90,8 @@
   </div>
 
   <div *ngIf="trading && !isStarter && !replied">
-    <button ion-button block (click)="replyTrade(true)">使用这些物品和对方交易</button>
-    <button ion-button block (click)="replyTrade(false)">拒绝对方的交易请求</button>
+    <button ion-button block (click)="replyTrade()">使用这些物品和对方交易</button>
+    <button ion-button block (click)="rejectTrade()">拒绝对方的交易请求</button>
   </div>
 
 
@@ -105,8 +105,8 @@
   </div>
 
   <div *ngIf="trading && isStarter && replied">
-    <button ion-button block (click)="confirmTrade(true)">同意交易</button>
-    <button ion-button block (click)="confirmTrade(false)">拒绝交易</button>
+    <button ion-button block (click)="confirmTrade()">同意交易</button>
+    <button ion-button block (click)="rejectTrade()">拒绝交易</button>
   </div>
 
 

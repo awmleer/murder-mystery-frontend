@@ -217,7 +217,9 @@ export class GameService {
       alert.addButton({
         text: '确定',
         handler: data=>{
-          resolve(data);
+          if(typeof data != 'undefined') {
+            resolve(parseInt(data));
+          }
         }
       });
       alert.present();
@@ -246,7 +248,7 @@ export class GameService {
         text: '确定',
         handler: data=>{
           if(typeof data != 'undefined'){
-            resolve(data);
+            resolve(parseInt(data));
           }
         }
       });
@@ -257,30 +259,27 @@ export class GameService {
   startTrade(roleId, transaction):Promise<null>{
     return this.socketSvc.inform('tradeEvents',{
       type:'startAndChoose',
-      targetRoleId: roleId,
+      tradeRoleId: roleId,
       transaction: transaction
     });
   }
 
-  replyTrade(accept:boolean, transaction){
-    let param;
-    if (accept){
-      param={
-        type:'choose',
-        transaction: transaction
-      }
-    }else{
-      param={
-        type:'reject'
-      }
-    }
-    return this.socketSvc.inform('tradeEvents',param);
+  replyTrade(transaction):Promise<null>{
+    return this.socketSvc.inform('tradeEvents',{
+      type:'choose',
+      transaction: transaction
+    });
   }
 
-  confirmTrade(accept:boolean):Promise<null>{
+  rejectTrade():Promise<null>{
     return this.socketSvc.inform('tradeEvents',{
-      type:'confirm',
-      res:accept?'accept':'reject'
+      type:'reject'
+    });
+  }
+
+  confirmTrade():Promise<null>{
+    return this.socketSvc.inform('tradeEvents',{
+      type:'confirm'
     });
   }
 

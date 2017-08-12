@@ -81,16 +81,22 @@ export class GTradePage {
   }
 
 
-  replyTrade(accept:boolean){
-    this.gameSvc.replyTrade(accept,accept?this.getTransactions():null).then(()=>{
+  replyTrade(){
+    this.gameSvc.replyTrade(this.getTransactions()).then(()=>{
       this.toastSvc.toast('已回复对方的交易请求');
       // this.navCtrl.pop();
     });
   }
 
-  confirmTrade(accept:boolean){
-    this.gameSvc.confirmTrade(accept).then(()=>{
-      this.toastSvc.toast(accept?'交易成功':'已拒绝交易');
+  rejectTrade(){
+    this.gameSvc.rejectTrade().then(()=>{
+      this.toastSvc.toast('交易已取消');
+    });
+  }
+
+  confirmTrade(){
+    this.gameSvc.confirmTrade().then(()=>{
+      this.toastSvc.toast('交易成功');
     });
   }
 
