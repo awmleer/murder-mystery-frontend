@@ -115,6 +115,20 @@ export interface PlayerModel {
   interactions:{
     [interactionId:string]: Interaction;
   };
+  transaction:{
+    withRoleId: number, //交易对象,-1表示没有交易
+    myTrans: {
+      Type: 'clue' | 'usable', //clue,usable
+      transactionId: number, //交易品id
+      amount: number
+    }[],
+    oppositeTrans: {
+      Type: 'clue' | 'usable',
+      transactionId: number,
+      amount: number
+    }[],
+    isStarter: boolean //是否为交易发起者
+  };
 }
 
 export interface PlayerDocument {

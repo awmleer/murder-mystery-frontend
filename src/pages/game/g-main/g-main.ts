@@ -8,6 +8,7 @@ import {GFormPage} from "../g-form/g-form";
 import {ClockService} from "../../../services/clock.service";
 import {GSkillPage} from "../g-skill/g-skill";
 import {GScorePage} from "../g-score/g-score";
+import {GTradePage} from "../g-trade/g-trade";
 
 
 @IonicPage()
@@ -89,6 +90,10 @@ export class GMainPage {
 
   goScorePage(){
     this.navCtrl.push(GScorePage);
+  }
+
+  goTradePage(){
+    this.navCtrl.push(GTradePage);
   }
 
 }
