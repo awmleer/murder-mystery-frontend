@@ -53,16 +53,16 @@
       >+</button>
     </div>
     <div *ngFor="let prop of gameSvc.playerModel.props | dictToArray | where : ['tradable',true]" style="border: solid 1px #bfbfbf;">
-      id: {{prop.id}}<br>
+      id: {{prop.key}}<br>
       {{prop.name}}<br>
-      {{thingsChosenAmount.prop[prop.id]?thingsChosenAmount.prop[prop.id]:0}}
+      {{thingsChosenAmount.prop[prop.key]?thingsChosenAmount.prop[prop.key]:0}}
       <button ion-button clear
-              (click)="decreaseThing('prop',prop.id)"
-              [disabled]="!thingsChosenAmount.prop[prop.id]"
+              (click)="decreaseThing('prop',prop.key)"
+              [disabled]="!thingsChosenAmount.prop[prop.key]"
       >-</button>
       <button ion-button clear
-              (click)="increaseThing('prop',prop.id)"
-              [disabled]="thingsChosenAmount.prop[prop.id]&&thingsChosenAmount.prop[prop.id]>=prop.value"
+              (click)="increaseThing('prop',prop.key)"
+              [disabled]="thingsChosenAmount.prop[prop.key]&&thingsChosenAmount.prop[prop.key]>=prop.value"
       >+</button>
       <!--TODO 改成input组件-->
     </div>
