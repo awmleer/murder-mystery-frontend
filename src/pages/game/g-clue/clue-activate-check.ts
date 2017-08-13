@@ -8,8 +8,7 @@ import {Usable, usableId} from "../../../classes/model";
 
 export class ClueActivateCheckPipe implements PipeTransform {
   transform(clueUsablesId:usableId[],usables:{[usableId:number]: Usable;}): boolean {
-    for (let i in clueUsablesId) {
-      let usableId = clueUsablesId[i];
+    for (let usableId of clueUsablesId) {
       if(usables[usableId]){
         return true;
       }

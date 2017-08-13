@@ -114,8 +114,7 @@ export class GameService {
     let alert = this.alertCtrl.create();
     alert.setTitle(interaction.title);
     alert.setSubTitle(interaction.subtitle);
-    for (let i in interaction.options) {
-      let option = interaction.options[i];
+    for (let option of interaction.options) {
       alert.addInput({
         type:'radio',
         label: option.text,
@@ -231,7 +230,7 @@ export class GameService {
     return new Promise((resolve, reject) => {
       let alert = this.alertCtrl.create();
       alert.setTitle('请选择物品');//TODO: use param to set title
-      for (let usableId in usablesId) {
+      for (let usableId of usablesId) {
         let usable = this.playerModel.usables[usableId];
         if (!usable) { // if player doesn't have this usable
           continue;
