@@ -4,6 +4,7 @@ import {PlatformService} from "../../services/platform.service";
 import {GameInfo} from "../../classes/game";
 import {GameService} from "../../services/game.service";
 import {GMainPage} from "../game/g-main/g-main";
+import {Player} from "../../classes/model";
 
 
 @IonicPage()
@@ -22,6 +23,14 @@ export class RoomPreparePage {
     public platformSvc: PlatformService,
     public gameSvc: GameService,
   ) {}
+
+  get mePlayer():Player{
+    if (this.gameSvc.roomModel && this.gameSvc.playerModel) {
+      return this.gameSvc.roomModel.players[this.gameSvc.playerModel.id];
+    }else{
+      return null;
+    }
+  }
 
   ionViewWillEnter(){
     this.gameSvc.initSocket();

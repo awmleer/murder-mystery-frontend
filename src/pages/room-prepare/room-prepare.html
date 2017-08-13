@@ -14,6 +14,7 @@
     <!--{{role._id}}<br>-->
     {{(role._id|roleToUser).username}}<br>
     <a (click)="gameSvc.selectRole(role._id)" *ngIf="gameSvc.roomModel.roleAvailable.indexOf(role._id)!=-1">选择</a>
+    <a (click)="gameSvc.selectRole(-1)" *ngIf="role._id==mePlayer?.role.id">取消选择</a>
   </div>
 
   <button ion-button block (click)="startGame()">开始游戏</button>
